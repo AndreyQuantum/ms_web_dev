@@ -1,0 +1,297 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1800" font-family="Arial, Helvetica, sans-serif">
+  <defs>
+    <style>
+      .title { font-size: 24px; font-weight: bold; fill: #333; }
+      .subtitle { font-size: 16px; fill: #555; }
+      .label { font-size: 13px; fill: #666; }
+      .small { font-size: 11px; fill: #888; }
+      .btn-text { font-size: 14px; fill: white; font-weight: bold; }
+      .link { font-size: 13px; fill: #4A90D9; }
+      .section-title { font-size: 18px; font-weight: bold; fill: #333; }
+      .placeholder { fill: #E8E8E8; stroke: #CCC; stroke-width: 1; }
+      .card { fill: white; stroke: #DDD; stroke-width: 1; rx: 8; }
+      .btn { fill: #4A90D9; rx: 6; }
+      .header-bg { fill: #2C3E50; }
+      .footer-bg { fill: #34495E; }
+      .divider { stroke: #E0E0E0; stroke-width: 1; }
+      .filter-bg { fill: #FAFBFC; stroke: #E0E0E0; stroke-width: 1; rx: 8; }
+      .input { fill: white; stroke: #CCC; stroke-width: 1; rx: 4; }
+      .chip { fill: #EBF5FB; stroke: #AED6F1; stroke-width: 1; rx: 12; }
+      .chip-active { fill: #4A90D9; rx: 12; }
+    </style>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="1800" fill="#F8F9FA"/>
+
+  <!-- Page Title -->
+
+
+  <!-- ========== HEADER ========== -->
+  <rect x="0" y="40" width="1200" height="70" class="header-bg"/>
+  <rect x="40" y="52" width="45" height="45" rx="8" fill="#F39C12"/>
+  <text x="63" y="82" text-anchor="middle" font-size="18" fill="white" font-weight="bold">💡</text>
+  <text x="100" y="72" font-size="18" fill="white" font-weight="bold">ЛампоМаркет</text>
+  <text x="100" y="88" font-size="10" fill="#BDC3C7">Завод-производитель</text>
+
+  <text x="380" y="80" font-size="14" fill="#BDC3C7">Главная</text>
+  <text x="470" y="80" font-size="14" fill="#ECF0F1" font-weight="bold" text-decoration="underline">Каталог</text>
+  <text x="560" y="80" font-size="14" fill="#BDC3C7">О компании</text>
+  <text x="670" y="80" font-size="14" fill="#BDC3C7">Контакты</text>
+
+  <rect x="1050" y="58" width="110" height="36" rx="18" fill="none" stroke="#BDC3C7" stroke-width="1"/>
+  <text x="1080" y="81" font-size="16">🛒</text>
+  <text x="1100" y="80" font-size="13" fill="#ECF0F1">Корзина (2)</text>
+
+  <!-- ========== BREADCRUMB ========== -->
+  <text x="60" y="140" font-size="13" fill="#4A90D9">Главная</text>
+  <text x="115" y="140" font-size="13" fill="#999"> / </text>
+  <text x="130" y="140" font-size="13" fill="#333" font-weight="bold">Каталог товаров</text>
+
+  <!-- ========== PAGE TITLE ========== -->
+  <text x="60" y="175" class="title">Каталог товаров</text>
+  <text x="60" y="198" class="subtitle">Найдено 128 товаров</text>
+
+  <!-- ========== SEARCH BAR ========== -->
+  <rect x="60" y="215" width="900" height="48" class="input" rx="8"/>
+  <text x="90" y="244" font-size="18" fill="#CCC">🔍</text>
+  <text x="115" y="244" font-size="14" fill="#AAA">Поиск по названию, артикулу, характеристикам...</text>
+  <rect x="970" y="215" width="170" height="48" class="btn" rx="8"/>
+  <text x="1055" y="244" text-anchor="middle" class="btn-text">Найти</text>
+
+  <!-- ========== LAYOUT: FILTERS (LEFT) + PRODUCTS (RIGHT) ========== -->
+
+  <!-- Filters sidebar -->
+  <rect x="60" y="285" width="270" height="1000" class="filter-bg"/>
+  
+  <text x="85" y="315" font-size="16" fill="#333" font-weight="bold">⚙ Фильтры</text>
+  <line x1="80" y1="325" x2="310" y2="325" class="divider"/>
+
+  <!-- Filter: Категория (Category) -->
+  <text x="85" y="350" font-size="14" fill="#333" font-weight="bold">Категория</text>
+
+  <rect x="85" y="360" width="225" height="32" class="input"/>
+  <text x="100" y="381" font-size="12" fill="#999">Выберите категорию ▾</text>
+
+  <!-- Filter: Тип лампы (BulbType) -->
+  <text x="85" y="415" font-size="14" fill="#333" font-weight="bold">Тип лампы</text>
+
+  <rect x="85" y="425" width="18" height="18" rx="3" fill="white" stroke="#CCC" stroke-width="1"/>
+  <text x="110" y="439" font-size="12" fill="#555">LED</text>
+  <rect x="85" y="450" width="18" height="18" rx="3" fill="#4A90D9" stroke="#4A90D9" stroke-width="1"/>
+  <text x="95" y="463" font-size="12" fill="white" font-weight="bold">✓</text>
+  <text x="110" y="464" font-size="12" fill="#555">Филаментная</text>
+  <rect x="85" y="475" width="18" height="18" rx="3" fill="white" stroke="#CCC" stroke-width="1"/>
+  <text x="110" y="489" font-size="12" fill="#555">Галогенная</text>
+  <rect x="85" y="500" width="18" height="18" rx="3" fill="white" stroke="#CCC" stroke-width="1"/>
+  <text x="110" y="514" font-size="12" fill="#555">Люминесцентная</text>
+
+  <!-- Filter: Форма (BulbShape) -->
+  <text x="85" y="550" font-size="14" fill="#333" font-weight="bold">Форма лампы</text>
+
+  <rect x="85" y="560" width="225" height="32" class="input"/>
+  <text x="100" y="581" font-size="12" fill="#999">Все формы ▾</text>
+
+  <!-- Filter: Цоколь (Socket) -->
+  <text x="85" y="615" font-size="14" fill="#333" font-weight="bold">Цоколь</text>
+
+  <rect x="85" y="625" width="70" height="28" class="chip-active"/>
+  <text x="120" y="644" text-anchor="middle" font-size="11" fill="white">E27</text>
+  <rect x="162" y="625" width="70" height="28" class="chip"/>
+  <text x="197" y="644" text-anchor="middle" font-size="11" fill="#4A90D9">E14</text>
+  <rect x="239" y="625" width="70" height="28" class="chip"/>
+  <text x="274" y="644" text-anchor="middle" font-size="11" fill="#4A90D9">GU10</text>
+  <rect x="85" y="660" width="70" height="28" class="chip"/>
+  <text x="120" y="679" text-anchor="middle" font-size="11" fill="#4A90D9">G13</text>
+  <rect x="162" y="660" width="70" height="28" class="chip"/>
+  <text x="197" y="679" text-anchor="middle" font-size="11" fill="#4A90D9">GU5.3</text>
+
+  <!-- Filter: Яркость (brightness_lm) -->
+  <text x="85" y="720" font-size="14" fill="#333" font-weight="bold">Яркость, лм</text>
+
+  <rect x="85" y="733" width="100" height="30" class="input"/>
+  <text x="100" y="753" font-size="11" fill="#AAA">от 0</text>
+  <text x="195" y="753" font-size="12" fill="#999">—</text>
+  <rect x="210" y="733" width="100" height="30" class="input"/>
+  <text x="225" y="753" font-size="11" fill="#AAA">до 5000</text>
+
+  <!-- Filter: Цена (price) -->
+  <text x="85" y="790" font-size="14" fill="#333" font-weight="bold">Цена, ₽</text>
+
+  <rect x="85" y="803" width="100" height="30" class="input"/>
+  <text x="100" y="823" font-size="11" fill="#AAA">от 50</text>
+  <text x="195" y="823" font-size="12" fill="#999">—</text>
+  <rect x="210" y="803" width="100" height="30" class="input"/>
+  <text x="225" y="823" font-size="11" fill="#AAA">до 5000</text>
+
+  <!-- Range slider visual -->
+  <line x1="85" y1="845" x2="310" y2="845" stroke="#E0E0E0" stroke-width="3" stroke-linecap="round"/>
+  <line x1="120" y1="845" x2="260" y2="845" stroke="#4A90D9" stroke-width="3" stroke-linecap="round"/>
+  <circle cx="120" cy="845" r="7" fill="white" stroke="#4A90D9" stroke-width="2"/>
+  <circle cx="260" cy="845" r="7" fill="white" stroke="#4A90D9" stroke-width="2"/>
+
+  <!-- Filter: В наличии -->
+  <text x="85" y="885" font-size="14" fill="#333" font-weight="bold">Наличие</text>
+
+  <rect x="85" y="895" width="36" height="20" rx="10" fill="#4A90D9"/>
+  <circle cx="111" cy="905" r="8" fill="white"/>
+  <text x="130" y="909" font-size="12" fill="#555">Только в наличии</text>
+
+  <!-- Filter: Поставщик (Supplier) -->
+  <text x="85" y="945" font-size="14" fill="#333" font-weight="bold">Поставщик</text>
+
+  <rect x="85" y="955" width="225" height="32" class="input"/>
+  <text x="100" y="976" font-size="12" fill="#999">Все поставщики ▾</text>
+
+  <!-- Apply button -->
+  <rect x="85" y="1010" width="225" height="40" class="btn"/>
+  <text x="197" y="1035" text-anchor="middle" class="btn-text" font-size="13">Применить фильтры</text>
+  <text x="197" y="1070" text-anchor="middle" class="link" font-size="12" style="cursor:pointer">Сбросить все фильтры</text>
+
+  <!-- ========== PRODUCT GRID (RIGHT SIDE) ========== -->
+
+  <!-- Sort bar -->
+  <rect x="360" y="285" width="790" height="45" rx="8" fill="white" stroke="#E0E0E0" stroke-width="1"/>
+  <text x="380" y="313" font-size="13" fill="#666">Сортировка:</text>
+  <rect x="470" y="295" width="100" height="28" rx="14" fill="#4A90D9"/>
+  <text x="520" y="313" text-anchor="middle" font-size="11" fill="white">По цене ↑</text>
+  <rect x="580" y="295" width="100" height="28" class="chip"/>
+  <text x="630" y="313" text-anchor="middle" font-size="11" fill="#4A90D9">По цене ↓</text>
+  <rect x="690" y="295" width="120" height="28" class="chip"/>
+  <text x="750" y="313" text-anchor="middle" font-size="11" fill="#4A90D9">По названию</text>
+  <rect x="820" y="295" width="120" height="28" class="chip"/>
+  <text x="880" y="313" text-anchor="middle" font-size="11" fill="#4A90D9">По яркости</text>
+
+  <!-- Display toggle -->
+  <rect x="1080" y="295" width="28" height="28" rx="4" fill="#4A90D9"/>
+  <text x="1094" y="314" text-anchor="middle" font-size="14" fill="white">☷</text>
+  <rect x="1115" y="295" width="28" height="28" rx="4" fill="white" stroke="#CCC" stroke-width="1"/>
+  <text x="1129" y="314" text-anchor="middle" font-size="14" fill="#999">☰</text>
+
+  <!-- Product Cards Grid (3 columns) -->
+  <!-- Row 1 -->
+  <g transform="translate(360, 350)">
+    <rect width="245" height="300" class="card"/>
+    <rect x="15" y="10" width="215" height="150" rx="4" class="placeholder"/>
+    <text x="122" y="90" text-anchor="middle" class="label">[ Фото товара ]</text>
+    <rect x="20" y="18" width="50" height="22" rx="11" fill="#27AE60"/>
+    <text x="45" y="33" text-anchor="middle" font-size="9" fill="white">В наличии</text>
+    <text x="20" y="183" font-size="14" fill="#333" font-weight="bold">LED Лампа E27 10W</text>
+    <text x="20" y="200" font-size="11" fill="#888">Цоколь: E27 · Форма: A60</text>
+    <text x="20" y="217" font-size="11" fill="#888">800 лм · LED · Тёплый белый</text>
+    <text x="20" y="245" font-size="18" fill="#2C3E50" font-weight="bold">150 ₽</text>
+    <rect x="20" y="260" width="100" height="30" class="btn"/>
+    <text x="70" y="280" text-anchor="middle" font-size="11" fill="white" font-weight="bold">В корзину</text>
+    <text x="135" y="280" class="link" font-size="11">Подробнее →</text>
+  </g>
+
+  <g transform="translate(620, 350)">
+    <rect width="245" height="300" class="card"/>
+    <rect x="15" y="10" width="215" height="150" rx="4" class="placeholder"/>
+    <text x="122" y="90" text-anchor="middle" class="label">[ Фото товара ]</text>
+    <rect x="20" y="18" width="50" height="22" rx="11" fill="#27AE60"/>
+    <text x="45" y="33" text-anchor="middle" font-size="9" fill="white">В наличии</text>
+    <rect x="170" y="18" width="55" height="22" rx="11" fill="#E74C3C"/>
+    <text x="197" y="33" text-anchor="middle" font-size="9" fill="white">−15%</text>
+    <text x="20" y="183" font-size="14" fill="#333" font-weight="bold">Филамент A60 E14</text>
+    <text x="20" y="200" font-size="11" fill="#888">Цоколь: E14 · Форма: A60</text>
+    <text x="20" y="217" font-size="11" fill="#888">600 лм · Филамент · Тёплый</text>
+    <text x="20" y="245" font-size="13" fill="#AAA" text-decoration="line-through">180 ₽</text>
+    <text x="75" y="245" font-size="18" fill="#E74C3C" font-weight="bold">153 ₽</text>
+    <rect x="20" y="260" width="100" height="30" class="btn"/>
+    <text x="70" y="280" text-anchor="middle" font-size="11" fill="white" font-weight="bold">В корзину</text>
+    <text x="135" y="280" class="link" font-size="11">Подробнее →</text>
+  </g>
+
+  <g transform="translate(880, 350)">
+    <rect width="245" height="300" class="card"/>
+    <rect x="15" y="10" width="215" height="150" rx="4" class="placeholder"/>
+    <text x="122" y="90" text-anchor="middle" class="label">[ Фото товара ]</text>
+    <rect x="20" y="18" width="60" height="22" rx="11" fill="#E74C3C"/>
+    <text x="50" y="33" text-anchor="middle" font-size="9" fill="white">Нет в нал.</text>
+    <text x="20" y="183" font-size="14" fill="#333" font-weight="bold">Точечная GU10 5W</text>
+    <text x="20" y="200" font-size="11" fill="#888">Цоколь: GU10 · Форма: MR16</text>
+    <text x="20" y="217" font-size="11" fill="#888">400 лм · LED · Нейтральный</text>
+    <text x="20" y="245" font-size="18" fill="#2C3E50" font-weight="bold">95 ₽</text>
+    <rect x="20" y="260" width="100" height="30" rx="6" fill="#BDC3C7"/>
+    <text x="70" y="280" text-anchor="middle" font-size="11" fill="white" font-weight="bold">Нет в нал.</text>
+    <text x="135" y="280" class="link" font-size="11">Подробнее →</text>
+  </g>
+
+  <!-- Row 2 -->
+  <g transform="translate(360, 670)">
+    <rect width="245" height="300" class="card"/>
+    <rect x="15" y="10" width="215" height="150" rx="4" class="placeholder"/>
+    <text x="122" y="90" text-anchor="middle" class="label">[ Фото товара ]</text>
+    <rect x="20" y="18" width="50" height="22" rx="11" fill="#27AE60"/>
+    <text x="45" y="33" text-anchor="middle" font-size="9" fill="white">В наличии</text>
+    <text x="20" y="183" font-size="14" fill="#333" font-weight="bold">Трубка T8 G13 18W</text>
+    <text x="20" y="200" font-size="11" fill="#888">Цоколь: G13 · Форма: T8</text>
+    <text x="20" y="217" font-size="11" fill="#888">1600 лм · LED · Холодный</text>
+    <text x="20" y="245" font-size="18" fill="#2C3E50" font-weight="bold">320 ₽</text>
+    <rect x="20" y="260" width="100" height="30" class="btn"/>
+    <text x="70" y="280" text-anchor="middle" font-size="11" fill="white" font-weight="bold">В корзину</text>
+    <text x="135" y="280" class="link" font-size="11">Подробнее →</text>
+  </g>
+
+  <g transform="translate(620, 670)">
+    <rect width="245" height="300" class="card"/>
+    <rect x="15" y="10" width="215" height="150" rx="4" class="placeholder"/>
+    <text x="122" y="90" text-anchor="middle" class="label">[ Фото товара ]</text>
+    <rect x="20" y="18" width="50" height="22" rx="11" fill="#27AE60"/>
+    <text x="45" y="33" text-anchor="middle" font-size="9" fill="white">В наличии</text>
+    <text x="20" y="183" font-size="14" fill="#333" font-weight="bold">Свеча C37 E14 5W</text>
+    <text x="20" y="200" font-size="11" fill="#888">Цоколь: E14 · Форма: C37</text>
+    <text x="20" y="217" font-size="11" fill="#888">450 лм · Филамент · Тёплый</text>
+    <text x="20" y="245" font-size="18" fill="#2C3E50" font-weight="bold">90 ₽</text>
+    <rect x="20" y="260" width="100" height="30" class="btn"/>
+    <text x="70" y="280" text-anchor="middle" font-size="11" fill="white" font-weight="bold">В корзину</text>
+    <text x="135" y="280" class="link" font-size="11">Подробнее →</text>
+  </g>
+
+  <g transform="translate(880, 670)">
+    <rect width="245" height="300" class="card"/>
+    <rect x="15" y="10" width="215" height="150" rx="4" class="placeholder"/>
+    <text x="122" y="90" text-anchor="middle" class="label">[ Фото товара ]</text>
+    <rect x="20" y="18" width="50" height="22" rx="11" fill="#27AE60"/>
+    <text x="45" y="33" text-anchor="middle" font-size="9" fill="white">В наличии</text>
+    <text x="20" y="183" font-size="14" fill="#333" font-weight="bold">Прожектор 50W IP65</text>
+    <text x="20" y="200" font-size="11" fill="#888">Категория: Прожекторы</text>
+    <text x="20" y="217" font-size="11" fill="#888">4000 лм · LED · Нейтральный</text>
+    <text x="20" y="245" font-size="18" fill="#2C3E50" font-weight="bold">890 ₽</text>
+    <rect x="20" y="260" width="100" height="30" class="btn"/>
+    <text x="70" y="280" text-anchor="middle" font-size="11" fill="white" font-weight="bold">В корзину</text>
+    <text x="135" y="280" class="link" font-size="11">Подробнее →</text>
+  </g>
+
+  <!-- ========== PAGINATION ========== -->
+  <g transform="translate(360, 1010)">
+    <rect x="0" y="0" width="790" height="50" rx="8" fill="white" stroke="#E0E0E0" stroke-width="1"/>
+    <text x="250" y="30" font-size="13" fill="#999">Страница:</text>
+    <rect x="320" y="10" width="32" height="32" rx="4" fill="#4A90D9"/>
+    <text x="336" y="32" text-anchor="middle" font-size="13" fill="white" font-weight="bold">1</text>
+    <rect x="358" y="10" width="32" height="32" rx="4" fill="white" stroke="#DDD" stroke-width="1"/>
+    <text x="374" y="32" text-anchor="middle" font-size="13" fill="#666">2</text>
+    <rect x="396" y="10" width="32" height="32" rx="4" fill="white" stroke="#DDD" stroke-width="1"/>
+    <text x="412" y="32" text-anchor="middle" font-size="13" fill="#666">3</text>
+    <text x="442" y="32" font-size="13" fill="#999">...</text>
+    <rect x="460" y="10" width="32" height="32" rx="4" fill="white" stroke="#DDD" stroke-width="1"/>
+    <text x="476" y="32" text-anchor="middle" font-size="13" fill="#666">13</text>
+    <rect x="500" y="10" width="50" height="32" rx="4" fill="white" stroke="#DDD" stroke-width="1"/>
+    <text x="525" y="32" text-anchor="middle" font-size="13" fill="#666">→</text>
+  </g>
+
+  <!-- ========== FOOTER ========== -->
+  <rect x="0" y="1620" width="1200" height="180" class="footer-bg"/>
+  <text x="60" y="1660" font-size="16" fill="white" font-weight="bold">ЛампоМаркет</text>
+  <text x="60" y="1680" font-size="12" fill="#BDC3C7">© 2026 Завод-производитель светотехники</text>
+  <text x="400" y="1655" font-size="13" fill="#ECF0F1" font-weight="bold">Навигация</text>
+  <text x="400" y="1675" font-size="12" fill="#BDC3C7">Каталог товаров</text>
+  <text x="400" y="1692" font-size="12" fill="#BDC3C7">О компании</text>
+  <text x="400" y="1709" font-size="12" fill="#BDC3C7">Контакты</text>
+  <text x="650" y="1655" font-size="13" fill="#ECF0F1" font-weight="bold">Контакты</text>
+  <text x="650" y="1675" font-size="12" fill="#BDC3C7">📞 +7 (495) 123-45-67</text>
+  <text x="650" y="1692" font-size="12" fill="#BDC3C7">📧 info@lampomarket.ru</text>
+
+
+</svg>

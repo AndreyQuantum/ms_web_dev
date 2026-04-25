@@ -1,0 +1,93 @@
+@startuml
+skinparam wrapWidth 200
+skinparam activity {
+  BackgroundColor #FFFFFF
+  BorderColor #333333
+  DiamondBackgroundColor #E8F8F5
+  DiamondBorderColor #1ABC9C
+}
+skinparam swimlane {
+  BorderColor #333333
+  BorderThickness 2
+  TitleFontColor #333333
+  TitleFontSize 16
+}
+
+|Покупатель (Клиент)|
+start
+split
+  :Главная страница\n(Просмотр промо-баннеров и акций);
+  kill
+split again
+  :О компании / Контакты\n(Статическая информация и условия);
+  kill
+split again
+  :Каталог товаров;
+  :Использование поиска,\nфильтров и пагинации;
+  :Переход в Карточку товара;
+  :Просмотр характеристик,\nфото и отзывов;
+  
+  if (Добавить в корзину?) then (Да)
+    :Управление корзиной\n(Local Storage: добавление,\nизменение кол-ва, удаление);
+    :Переход к Оформлению заказа;
+    :Заполнение формы\n(Email, Телефон);
+    
+    |Система (Frontend + Backend)|
+    :POST-запрос отправки заказа;
+    :Сохранение заказа в БД\n(Без создания личного кабинета);
+    
+    |Покупатель (Клиент)|
+    :Страница успешного\nоформления;
+    kill
+  else (Нет)
+    :Продолжение просмотра;
+    kill
+  endif
+end split
+
+|Администратор|
+start
+:Страница Авторизации (Login);
+:Ввод логина и пароля;
+
+|Система (Frontend + Backend)|
+:POST-запрос авторизации;
+if (Данные верны?) then (Да)
+  :Генерация и выдача\nJWT-токена;
+  
+  |Администратор|
+  :Вход в Админ-панель;
+  split
+    :Дашборд;
+    |Система (Frontend + Backend)|
+    :Сбор данных через\nSQL-представления (Views);
+    |Администратор|
+    :Просмотр базовой\nстатистики и аналитики;
+    kill
+  split again
+    :Управление товарами;
+    |Система (Frontend + Backend)|
+    :POST/PUT/PATCH\n(Создание, обновление,\nархивация/скрытие);
+    kill
+  split again
+    :Импорт товаров;
+    :Загрузка файла;
+    |Система (Frontend + Backend)|
+    :POST-запрос\n(Массовая загрузка данных);
+    kill
+  split again
+    :Справочники;
+    |Система (Frontend + Backend)|
+    :POST/PUT/DELETE\n(Управление типами ламп,\nформами, цоколями и т.д.);
+    kill
+  end split
+else (Нет)
+  |Система (Frontend + Backend)|
+  :Ошибка 403 Forbidden\n(или редирект на главную);
+  
+  |Администратор|
+  :Отказ в доступе;
+  kill
+endif
+
+@enduml

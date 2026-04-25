@@ -1,0 +1,50 @@
+@startuml
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
+
+' Настройки внешнего вида
+LAYOUT_WITH_LEGEND()
+title C4 Container Diagram: Интернет-магазин завода "Лампочек"
+
+' Пользователи системы
+Person(customer, "Покупатель", "Неавторизованный клиент, который ищет лампы и оформляет заказы.")
+Person(admin, "Администратор", "Сотрудник завода, управляющий товарами, справочниками и аналитикой.")
+
+System_Boundary(ecommerce_system, "Система Интернет-магазина") {
+    
+    ' Frontend приложения
+    Container(web_app, "Пользовательская витрина", "React, Redux", "Предоставляет интерфейс каталога, корзину (через Local Storage) и форму заказа.")
+    Container(admin_app, "Админ-панель", "React, Redux", "SPA-приложение для управления контентом магазина и просмотра статистики.")
+
+    ' Backend микросервисы
+    Container(auth_svc, "Auth Service\n(Сервис авторизации)", "FastAPI", "Проверяет учетные данные администраторов, выдает и валидирует JWT-токены.")
+    Container(product_svc, "Product Service\n(Сервис товаров)", "FastAPI", "Предоставляет API каталога, поиска, фильтрации и CRUD-операций для карточек товаров.")
+    Container(order_svc, "Order Service\n(Сервис заказов)", "FastAPI", "Принимает новые заказы, хранит контакты покупателей и формирует статистику.")
+
+    ' Базы данных
+    ContainerDb(auth_db, "Auth Database", "PostgreSQL", "Хранит учетные записи администраторов и хэши паролей.")
+    ContainerDb(product_db, "Product Database", "PostgreSQL", "Хранит номенклатуру, справочники (формы, цоколи) и отзывы.")
+    ContainerDb(order_db, "Order Database", "PostgreSQL", "Хранит контактные данные из заказов и состав чеков. Содержит агрегирующие SQL-представления (Views) для аналитики.")
+}
+
+' Взаимодействия пользователей с фронтендом
+Rel(customer, web_app, "Просматривает каталог, формирует заказ", "HTTPS")
+Rel(admin, admin_app, "Управляет магазином, смотрит продажи", "HTTPS")
+
+' Взаимодействия витрины с микросервисами (без авторизации)
+Rel(web_app, product_svc, "Запрашивает список товаров и фильтры", "JSON/HTTPS")
+Rel(web_app, order_svc, "Отправляет сформированный заказ (POST)", "JSON/HTTPS")
+
+' Взаимодействия админки с микросервисами (с авторизацией)
+Rel(admin_app, auth_svc, "Получает JWT-токен доступа", "JSON/HTTPS")
+Rel(admin_app, product_svc, "Управляет товарами и справочниками (с токеном)", "JSON/HTTPS")
+Rel(admin_app, order_svc, "Запрашивает статистику (с токеном)", "JSON/HTTPS")
+
+' Взаимодействие между микросервисами
+Rel_R(order_svc, product_svc, "Синхронизирует цены/проверяет остатки", "REST")
+
+' Взаимодействия сервисов с БД
+Rel(auth_svc, auth_db, "Чтение/запись", "SQL/TCP")
+Rel(product_svc, product_db, "Чтение/запись", "SQL/TCP")
+Rel(order_svc, order_db, "Чтение/запись", "SQL/TCP")
+
+@enduml

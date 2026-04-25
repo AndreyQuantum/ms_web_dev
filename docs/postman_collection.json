@@ -1,0 +1,1019 @@
+{
+	"info": {
+		"_postman_id": "a1b2c3d4-e5f6-7890-1234-567890abcdef",
+		"name": "Lightbulb Factory API",
+		"description": "API коллекция для интернет-магазина завода Лампочек. Разделена на 3 микросервиса. Включает примеры запросов и ответов.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Auth Service",
+			"item": [
+				{
+					"name": "Login (Admin)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"login\": \"admin_user\",\n  \"password\": \"secure_password_123\"\n}"
+						},
+						"url": {
+							"raw": "{{auth_base_url}}/api/v1/auth/login",
+							"host": [
+								"{{auth_base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Successful Login",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"login\": \"admin_user\",\n  \"password\": \"secure_password_123\"\n}"
+								},
+								"url": {
+									"raw": "{{auth_base_url}}/api/v1/auth/login",
+									"host": [
+										"{{auth_base_url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"auth",
+										"login"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"access_token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhMWIyYzNkNC1lNWY2LTc4OTAtMTIzNC01Njc4OTBhYmNkZWYiLCJpYXQiOjE2ODg0MTMwOTB9...\",\n  \"refresh_token\": \"dGhpcy1pcy1hLXJlZnJlc2gtdG9rZW4tc2FtcGxl...\"\n}"
+						},
+						{
+							"name": "Failed Login (Invalid Credentials)",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"login\": \"admin_user\",\n  \"password\": \"wrong_password\"\n}"
+								},
+								"url": {
+									"raw": "{{auth_base_url}}/api/v1/auth/login",
+									"host": [
+										"{{auth_base_url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"auth",
+										"login"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"error\": \"invalid_credentials\",\n  \"message\": \"Неверный логин или пароль\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Refresh Token",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"refresh_token\": \"dGhpcy1pcy1hLXJlZnJlc2gtdG9rZW4tc2FtcGxl...\"\n}"
+						},
+						"url": {
+							"raw": "{{auth_base_url}}/api/v1/auth/refresh",
+							"host": [
+								"{{auth_base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"refresh"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Successful Refresh",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"refresh_token\": \"dGhpcy1pcy1hLXJlZnJlc2gtdG9rZW4tc2FtcGxl...\"\n}"
+								},
+								"url": {
+									"raw": "{{auth_base_url}}/api/v1/auth/refresh",
+									"host": [
+										"{{auth_base_url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"auth",
+										"refresh"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"access_token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.new_access_token_payload...\",\n  \"refresh_token\": \"dGhpcy1pcy1hLW5ldy1yZWZyZXNoLXRva2Vu...\"\n}"
+						},
+						{
+							"name": "Failed Refresh (Invalid/Expired Token)",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"refresh_token\": \"invalid_or_expired_refresh_token\"\n}"
+								},
+								"url": {
+									"raw": "{{auth_base_url}}/api/v1/auth/refresh",
+									"host": [
+										"{{auth_base_url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"auth",
+										"refresh"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"error\": \"invalid_grant\",\n  \"message\": \"Refresh token недействителен или просрочен\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Product Service",
+			"item": [
+				{
+					"name": "Products",
+					"item": [
+						{
+							"name": "Get All Products (Catalog)",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{product_base_url}}/api/v1/products?category_id=1&is_archived=false",
+									"host": [
+										"{{product_base_url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"products"
+									],
+									"query": [
+										{
+											"key": "category_id",
+											"value": "1"
+										},
+										{
+											"key": "is_archived",
+											"value": "false"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "List of Products",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{product_base_url}}/api/v1/products?category_id=1&is_archived=false",
+											"host": [
+												"{{product_base_url}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"products"
+											],
+											"query": [
+												{
+													"key": "category_id",
+													"value": "1"
+												},
+												{
+													"key": "is_archived",
+													"value": "false"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"data\": [\n    {\n      \"id\": \"550e8400-e29b-41d4-a716-446655440000\",\n      \"title\": \"Лампа LED 10W\",\n      \"description\": \"Отличная энергосберегающая лампа.\",\n      \"price\": 450.00,\n      \"quantity\": 100,\n      \"brightness_lm\": 800,\n      \"is_archived\": false,\n      \"available_from\": \"2026-04-12\",\n      \"category_id\": 1,\n      \"bulb_type_id\": 2,\n      \"bulb_shape_id\": 1,\n      \"socket_id\": 1,\n      \"supplier_id\": 3,\n      \"promo_id\": null,\n      \"created_at\": \"2026-04-10T08:00:00Z\",\n      \"created_by\": \"a1b2c3d4-e5f6-7890-1234-567890abcdef\",\n      \"edited_at\": null,\n      \"edited_by\": null\n    }\n  ],\n  \"meta\": {\n    \"total\": 1,\n    \"page\": 1,\n    \"size\": 10\n  }\n}"
+								}
+							]
+						},
+						{
+							"name": "Create Product (Admin)",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{admin_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"title\": \"Лампа LED 10W\",\n  \"description\": \"Отличная энергосберегающая лампа.\",\n  \"price\": 450.00,\n  \"quantity\": 100,\n  \"brightness_lm\": 800,\n  \"is_archived\": false,\n  \"available_from\": \"2026-04-12\",\n  \"category_id\": 1,\n  \"bulb_type_id\": 2,\n  \"bulb_shape_id\": 1,\n  \"socket_id\": 1,\n  \"supplier_id\": 3,\n  \"promo_id\": null\n}"
+								},
+								"url": {
+									"raw": "{{product_base_url}}/api/v1/products",
+									"host": [
+										"{{product_base_url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"products"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Product Created",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"title\": \"Лампа LED 10W\",\n  \"description\": \"Отличная энергосберегающая лампа.\",\n  \"price\": 450.00,\n  \"quantity\": 100,\n  \"brightness_lm\": 800,\n  \"is_archived\": false,\n  \"available_from\": \"2026-04-12\",\n  \"category_id\": 1,\n  \"bulb_type_id\": 2,\n  \"bulb_shape_id\": 1,\n  \"socket_id\": 1,\n  \"supplier_id\": 3,\n  \"promo_id\": null\n}"
+										},
+										"url": {
+											"raw": "{{product_base_url}}/api/v1/products",
+											"host": [
+												"{{product_base_url}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"products"
+											]
+										}
+									},
+									"status": "Created",
+									"code": 201,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"id\": \"550e8400-e29b-41d4-a716-446655440000\",\n  \"title\": \"Лампа LED 10W\",\n  \"description\": \"Отличная энергосберегающая лампа.\",\n  \"price\": 450.00,\n  \"quantity\": 100,\n  \"brightness_lm\": 800,\n  \"is_archived\": false,\n  \"available_from\": \"2026-04-12\",\n  \"category_id\": 1,\n  \"bulb_type_id\": 2,\n  \"bulb_shape_id\": 1,\n  \"socket_id\": 1,\n  \"supplier_id\": 3,\n  \"promo_id\": null,\n  \"created_at\": \"2026-04-12T15:20:00Z\",\n  \"created_by\": \"a1b2c3d4-e5f6-7890-1234-567890abcdef\",\n  \"edited_at\": null,\n  \"edited_by\": null\n}"
+								},
+								{
+									"name": "Unauthorized (Token Expired)",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"title\": \"Лампа LED 10W\",\n  \"description\": \"Отличная энергосберегающая лампа.\",\n  \"price\": 450.00,\n  \"quantity\": 100,\n  \"brightness_lm\": 800,\n  \"is_archived\": false,\n  \"available_from\": \"2026-04-12\",\n  \"category_id\": 1,\n  \"bulb_type_id\": 2,\n  \"bulb_shape_id\": 1,\n  \"socket_id\": 1,\n  \"supplier_id\": 3,\n  \"promo_id\": null\n}"
+										},
+										"url": {
+											"raw": "{{product_base_url}}/api/v1/products",
+											"host": [
+												"{{product_base_url}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"products"
+											]
+										}
+									},
+									"status": "Unauthorized",
+									"code": 401,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"error\": \"token_expired\",\n  \"message\": \"Срок действия access token истёк. Используйте refresh token для обновления.\"\n}"
+								}
+							]
+						},
+						{
+							"name": "Update Product (Admin)",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{admin_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"price\": 400.00,\n  \"quantity\": 85,\n  \"is_archived\": true\n}"
+								},
+								"url": {
+									"raw": "{{product_base_url}}/api/v1/products/:id",
+									"host": [
+										"{{product_base_url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"products",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "550e8400-e29b-41d4-a716-446655440000"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Product Updated",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"price\": 400.00,\n  \"quantity\": 85,\n  \"is_archived\": true\n}"
+										},
+										"url": {
+											"raw": "{{product_base_url}}/api/v1/products/:id",
+											"host": [
+												"{{product_base_url}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"products",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "550e8400-e29b-41d4-a716-446655440000"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"id\": \"550e8400-e29b-41d4-a716-446655440000\",\n  \"title\": \"Лампа LED 10W\",\n  \"description\": \"Отличная энергосберегающая лампа.\",\n  \"price\": 400.00,\n  \"quantity\": 85,\n  \"brightness_lm\": 800,\n  \"is_archived\": true,\n  \"available_from\": \"2026-04-12\",\n  \"category_id\": 1,\n  \"bulb_type_id\": 2,\n  \"bulb_shape_id\": 1,\n  \"socket_id\": 1,\n  \"supplier_id\": 3,\n  \"promo_id\": null,\n  \"created_at\": \"2026-04-12T15:20:00Z\",\n  \"created_by\": \"a1b2c3d4-e5f6-7890-1234-567890abcdef\",\n  \"edited_at\": \"2026-04-12T16:45:00Z\",\n  \"edited_by\": \"a1b2c3d4-e5f6-7890-1234-567890abcdef\"\n}"
+								}
+							]
+						},
+						{
+							"name": "Delete Product (Admin)",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{admin_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{product_base_url}}/api/v1/products/:id",
+									"host": [
+										"{{product_base_url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"products",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "550e8400-e29b-41d4-a716-446655440000"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Product Deleted Successfully",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{product_base_url}}/api/v1/products/:id",
+											"host": [
+												"{{product_base_url}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"products",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "550e8400-e29b-41d4-a716-446655440000"
+												}
+											]
+										}
+									},
+									"status": "No Content",
+									"code": 204,
+									"_postman_previewlanguage": "text",
+									"header": [],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Dictionaries (Categories, Types, Shapes, Sockets)",
+					"item": [
+						{
+							"name": "Get Categories",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{product_base_url}}/api/v1/categories",
+									"host": [
+										"{{product_base_url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"categories"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "List of Categories",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{product_base_url}}/api/v1/categories",
+											"host": [
+												"{{product_base_url}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"categories"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "[\n  {\n    \"id\": 1,\n    \"name\": \"Светодиодные лампы\",\n    \"created_at\": \"2026-01-01T10:00:00Z\",\n    \"created_by\": \"a1b2c3d4-e5f6-7890-1234-567890abcdef\",\n    \"edited_at\": null,\n    \"edited_by\": null\n  },\n  {\n    \"id\": 2,\n    \"name\": \"Лампы накаливания\",\n    \"created_at\": \"2026-01-01T10:05:00Z\",\n    \"created_by\": \"a1b2c3d4-e5f6-7890-1234-567890abcdef\",\n    \"edited_at\": null,\n    \"edited_by\": null\n  }\n]"
+								}
+							]
+						},
+						{
+							"name": "Create Socket (Admin)",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{admin_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"name\": \"E27\"\n}"
+								},
+								"url": {
+									"raw": "{{product_base_url}}/api/v1/sockets",
+									"host": [
+										"{{product_base_url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"sockets"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Socket Created",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"name\": \"E27\"\n}"
+										},
+										"url": {
+											"raw": "{{product_base_url}}/api/v1/sockets",
+											"host": [
+												"{{product_base_url}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"sockets"
+											]
+										}
+									},
+									"status": "Created",
+									"code": 201,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"id\": 1,\n  \"name\": \"E27\",\n  \"created_at\": \"2026-04-12T15:20:00Z\",\n  \"created_by\": \"a1b2c3d4-e5f6-7890-1234-567890abcdef\",\n  \"edited_at\": null,\n  \"edited_by\": null\n}"
+								}
+							]
+						},
+						{
+							"name": "Delete Socket (Admin)",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{admin_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{product_base_url}}/api/v1/sockets/:id",
+									"host": [
+										"{{product_base_url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"sockets",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Socket Deleted Successfully",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{product_base_url}}/api/v1/sockets/:id",
+											"host": [
+												"{{product_base_url}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"sockets",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "1"
+												}
+											]
+										}
+									},
+									"status": "No Content",
+									"code": 204,
+									"_postman_previewlanguage": "text",
+									"header": [],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Reviews",
+					"item": [
+						{
+							"name": "Add Review",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"product_id\": \"550e8400-e29b-41d4-a716-446655440000\",\n  \"text\": \"Светит ярко, покупкой доволен.\",\n  \"rating\": 5\n}"
+								},
+								"url": {
+									"raw": "{{product_base_url}}/api/v1/reviews",
+									"host": [
+										"{{product_base_url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"reviews"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Review Added",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"product_id\": \"550e8400-e29b-41d4-a716-446655440000\",\n  \"text\": \"Светит ярко, покупкой доволен.\",\n  \"rating\": 5\n}"
+										},
+										"url": {
+											"raw": "{{product_base_url}}/api/v1/reviews",
+											"host": [
+												"{{product_base_url}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"reviews"
+											]
+										}
+									},
+									"status": "Created",
+									"code": 201,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"id\": \"cdef1234-5678-90ab-cdef-1234567890ab\",\n  \"product_id\": \"550e8400-e29b-41d4-a716-446655440000\",\n  \"text\": \"Светит ярко, покупкой доволен.\",\n  \"rating\": 5,\n  \"created_at\": \"2026-04-12T15:30:00Z\",\n  \"created_by\": \"00000000-0000-0000-0000-000000000000\",\n  \"edited_at\": null,\n  \"edited_by\": null\n}"
+								}
+							]
+						},
+						{
+							"name": "Delete Review (Admin)",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{admin_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{product_base_url}}/api/v1/reviews/:id",
+									"host": [
+										"{{product_base_url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"reviews",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "cdef1234-5678-90ab-cdef-1234567890ab"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Review Deleted Successfully",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{product_base_url}}/api/v1/reviews/:id",
+											"host": [
+												"{{product_base_url}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"reviews",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "cdef1234-5678-90ab-cdef-1234567890ab"
+												}
+											]
+										}
+									},
+									"status": "No Content",
+									"code": 204,
+									"_postman_previewlanguage": "text",
+									"header": [],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Order Service"
+				},
+				{
+					"name": "Get Orders (Admin Analytics)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{admin_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{order_base_url}}/api/v1/orders?status=NEW",
+							"host": [
+								"{{order_base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"orders"
+							],
+							"query": [
+								{
+									"key": "status",
+									"value": "NEW"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "List of Filtered Orders",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{order_base_url}}/api/v1/orders?status=NEW",
+									"host": [
+										"{{order_base_url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"orders"
+									],
+									"query": [
+										{
+											"key": "status",
+											"value": "NEW"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "[\n  {\n    \"id\": \"11112222-3333-4444-5555-666677778888\",\n    \"client_email\": \"customer@example.com\",\n    \"client_phone\": \"+381601234567\",\n    \"comment\": \"Позвонить за час до доставки\",\n    \"status\": \"NEW\",\n    \"created_at\": \"2026-04-12T15:35:00Z\",\n    \"created_by\": null,\n    \"edited_at\": null,\n    \"edited_by\": null,\n    \"items\": [\n      {\n        \"id\": \"99998888-7777-6666-5555-444433332222\",\n        \"order_id\": \"11112222-3333-4444-5555-666677778888\",\n        \"product_id\": \"550e8400-e29b-41d4-a716-446655440000\",\n        \"quantity\": 2,\n        \"current_price\": 450.00,\n        \"created_at\": \"2026-04-12T15:35:00Z\",\n        \"created_by\": null,\n        \"edited_at\": null,\n        \"edited_by\": null\n      }\n    ]\n  }\n]"
+						}
+					]
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "auth_base_url",
+			"value": "http://localhost:8001",
+			"type": "string"
+		},
+		{
+			"key": "product_base_url",
+			"value": "http://localhost:8002",
+			"type": "string"
+		},
+		{
+			"key": "order_base_url",
+			"value": "http://localhost:8003",
+			"type": "string"
+		},
+		{
+			"key": "admin_token",
+			"value": "your_jwt_token_here",
+			"type": "string"
+		}
+	]
+}

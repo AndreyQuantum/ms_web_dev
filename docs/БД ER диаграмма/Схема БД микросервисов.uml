@@ -1,0 +1,153 @@
+@startuml
+skinparam roundcorner 10
+skinparam class {
+    BackgroundColor White
+    ArrowColor Black
+    BorderColor #666666
+}
+
+package "Auth Service (Сервис авторизации)" #E6F2FF {
+  class AdminUser {
+    + id: UUID
+    + login: String
+    + password_hash: String
+    -- Audit --
+    + created_at: DateTime
+    + created_by: UUID
+    + edited_at: DateTime?>
+    + edited_by: UUID?
+  }
+}
+
+package "Product Service (Сервис товаров)" #E6FFE6 {
+  class Product {
+    + id: UUID
+    + title: String
+    + description: Text 
+    + price: Decimal
+    + quantity: Int
+    + brightness_lm: Int
+    + is_archived: Boolean
+    + available_from: Date
+    -- Audit --
+    + created_at: DateTime
+    + created_by: UUID
+    + edited_at: DateTime?
+    + edited_by: UUID?
+  }
+
+  class Category {
+    + id: Int
+    + name: String
+    -- Audit --
+    + created_at: DateTime
+    + created_by: UUID
+    + edited_at: DateTime?
+    + edited_by: UUID?
+  }
+
+  class BulbType {
+    + id: Int
+    + name: String
+    -- Audit --
+    + created_at: DateTime
+    + created_by: UUID
+    + edited_at: DateTime?
+    + edited_by: UUID?
+  }
+
+  class BulbShape {
+    + id: Int
+    + name: String
+    -- Audit --
+    + created_at: DateTime
+    + created_by: UUID
+    + edited_at: DateTime?
+    + edited_by: UUID?
+  }
+
+  class Socket {
+    + id: Int
+    + name: String
+    -- Audit --
+    + created_at: DateTime
+    + created_by: UUID
+    + edited_at: DateTime?
+    + edited_by: UUID?
+  }
+
+  class Supplier {
+    + id: Int
+    + name: String
+    -- Audit --
+    + created_at: DateTime
+    + created_by: UUID
+    + edited_at: DateTime?
+    + edited_by: UUID?
+  }
+
+  class Review {
+    + id: UUID
+    + product_id: UUID
+    + text: String
+    + rating: Int
+    -- Audit --
+    + created_at: DateTime
+    + created_by: UUID
+    + edited_at: DateTime?
+    + edited_by: UUID?
+  }
+
+  class Promo {
+    + id: Int
+    + title: String
+    + discount_percent: Int
+    -- Audit --
+    + created_at: DateTime
+    + created_by: UUID
+    + edited_at: DateTime?
+    + edited_by: UUID?
+  }
+
+  Product "*" -- "1" Category
+  Product "*" -- "1" BulbType
+  Product "*" -- "1" BulbShape
+  Product "*" -- "1" Socket
+  Product "*" -- "1" Supplier
+  Product "1" -- "*" Review
+  Product "*" -- "0..1" Promo
+}
+
+package "Order Service (Сервис заказов)" #FFE6E6 {
+  class Order {
+    + id: UUID
+    + client_email: String
+    + client_phone: String
+    + comment: Text
+    + created_at: DateTime
+    + status: String
+    -- Audit --
+    + created_at: DateTime
+    + created_by: UUID
+    + edited_at: DateTime?
+    + edited_by: UUID?
+  }
+
+  class OrderItem {
+    + id: UUID
+    + order_id: UUID
+    + product_id: UUID
+    + quantity: Int
+    + current_price: Decimal
+    -- Audit --
+    + created_at: DateTime
+    + created_by: UUID
+    + edited_at: DateTime?
+    + edited_by: UUID?
+  }
+
+  Order "1" *-- "*" OrderItem : содержит
+  OrderItem "*" --> "1" Product : ссылается (кросс-сервис)
+}
+
+@enduml

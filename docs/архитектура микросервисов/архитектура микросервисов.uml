@@ -1,0 +1,41 @@
+@startuml
+skinparam BackgroundColor white
+skinparam RectangleBackgroundColor white
+skinparam RectangleBorderColor black
+skinparam DatabaseBackgroundColor white
+skinparam DatabaseBorderColor black
+skinparam ArrowColor #333333
+skinparam defaultTextAlignment center
+skinparam roundcorner 10
+
+' Определение элементов
+rectangle "Client\n(Web)" as client #E8F4F8
+
+rectangle "API Gateway" as gateway #F2F2F2
+
+rectangle "Auth Service" as auth_svc #E6FFE6
+rectangle "Product Service" as prod_svc #E6FFE6
+rectangle "Order Service" as order_svc #E6FFE6
+
+database "Auth DB" as auth_db #FFFBE6
+database "Product DB" as prod_db #FFFBE6
+database "Order DB" as order_db #FFFBE6
+
+' Выравнивание сервисов на одном уровне
+auth_svc -[hidden]right- prod_svc
+prod_svc -[hidden]right- order_svc
+
+' Связи
+client --> gateway : HTTP запросы
+
+gateway --> auth_svc : /auth/*
+gateway --> prod_svc : /products/*
+gateway --> order_svc : /orders/*
+
+auth_svc --> auth_db
+prod_svc --> prod_db
+order_svc --> order_db
+
+' Внутреннее взаимодействие между сервисами
+order_svc -left-> prod_svc : Проверка остатков и цены
+@enduml

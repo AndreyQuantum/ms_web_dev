@@ -1,0 +1,270 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1200" font-family="Arial, Helvetica, sans-serif">
+  <defs>
+    <style>
+      .small { font-size: 11px; fill: #888; }
+      .sidebar-bg { fill: #1A252F; }
+      .sidebar-active { fill: #4A90D9; rx: 6; }
+      .divider { stroke: #E0E0E0; stroke-width: 1; }
+      .input { fill: white; stroke: #CCC; stroke-width: 1; rx: 4; }
+      .btn { fill: #4A90D9; rx: 6; }
+      .btn-success { fill: #27AE60; rx: 6; }
+      .btn-danger { fill: #E74C3C; rx: 6; }
+      .card { fill: white; stroke: #E0E0E0; stroke-width: 1; rx: 8; }
+      .tab-active { fill: #4A90D9; rx: 6; }
+      .tab-inactive { fill: #E8E8E8; rx: 6; }
+    </style>
+  </defs>
+
+  <rect width="1200" height="1200" fill="#F0F2F5"/>
+
+  <!-- ========== SIDEBAR ========== -->
+  <rect x="0" y="35" width="240" height="1165" class="sidebar-bg"/>
+  <rect x="20" y="50" width="200" height="60" rx="8" fill="#2C3E50"/>
+  <text x="50" y="82" font-size="16" fill="white" font-weight="bold">💡 ЛампоМаркет</text>
+  <text x="50" y="100" font-size="10" fill="#7F8C8D">Панель администратора</text>
+
+  <rect x="15" y="130" width="210" height="40" fill="none"/>
+  <text x="50" y="155" font-size="14" fill="#95A5A6">📊 Дашборд</text>
+  <rect x="15" y="180" width="210" height="40" fill="none"/>
+  <text x="50" y="205" font-size="14" fill="#95A5A6">📦 Товары</text>
+  <rect x="15" y="230" width="210" height="40" fill="none"/>
+  <text x="50" y="255" font-size="14" fill="#95A5A6">📥 Импорт</text>
+  <rect x="15" y="280" width="210" height="40" class="sidebar-active"/>
+  <text x="50" y="305" font-size="14" fill="white" font-weight="bold">📋 Справочники</text>
+
+  <!-- ========== TOP BAR ========== -->
+  <rect x="240" y="35" width="960" height="55" fill="white" stroke="#E0E0E0" stroke-width="1"/>
+  <text x="270" y="68" font-size="18" fill="#2C3E50" font-weight="bold">📋 Справочники</text>
+  <text x="430" y="68" font-size="12" fill="#888">Управление типами, формами, цоколями и поставщиками</text>
+
+  <!-- ========== TABS ========== -->
+  <g transform="translate(265, 105)">
+    <rect x="0" y="0" width="140" height="40" class="tab-active"/>
+    <text x="70" y="26" text-anchor="middle" font-size="13" fill="white" font-weight="bold">Типы ламп</text>
+    <rect x="150" y="0" width="140" height="40" class="tab-inactive"/>
+    <text x="220" y="26" text-anchor="middle" font-size="13" fill="#666">Формы ламп</text>
+    <rect x="300" y="0" width="120" height="40" class="tab-inactive"/>
+    <text x="360" y="26" text-anchor="middle" font-size="13" fill="#666">Цоколи</text>
+    <rect x="430" y="0" width="130" height="40" class="tab-inactive"/>
+    <text x="495" y="26" text-anchor="middle" font-size="13" fill="#666">Категории</text>
+    <rect x="570" y="0" width="140" height="40" class="tab-inactive"/>
+    <text x="640" y="26" text-anchor="middle" font-size="13" fill="#666">Поставщики</text>
+    <rect x="720" y="0" width="120" height="40" class="tab-inactive"/>
+    <text x="780" y="26" text-anchor="middle" font-size="13" fill="#666">Промо</text>
+  </g>
+
+  <!-- ========== TAB CONTENT: Типы ламп (BulbType) ========== -->
+  <rect x="265" y="160" width="440" height="500" class="card"/>
+  
+  <text x="285" y="190" font-size="16" fill="#333" font-weight="bold">💡 Типы ламп (BulbType)</text>
+
+  <line x1="285" y1="218" x2="685" y2="218" class="divider"/>
+
+  <!-- Add new form -->
+  <rect x="285" y="230" width="300" height="35" class="input"/>
+  <text x="300" y="253" font-size="12" fill="#AAA">Новый тип лампы...</text>
+  <rect x="595" y="230" width="90" height="35" class="btn-success"/>
+  <text x="640" y="253" text-anchor="middle" font-size="12" fill="white" font-weight="bold">+ Добавить</text>
+
+  <!-- List items -->
+  <!-- Item 1 -->
+  <rect x="285" y="280" width="400" height="45" rx="4" fill="#FAFBFC" stroke="#E8E8E8" stroke-width="1"/>
+  <text x="300" y="308" font-size="14" fill="#333">LED (светодиодная)</text>
+  <text x="300" y="320" font-size="9" fill="#999">id: 1 · Товаров: 145</text>
+  <rect x="600" y="290" width="28" height="26" rx="4" fill="white" stroke="#4A90D9" stroke-width="1"/>
+  <text x="614" y="308" text-anchor="middle" font-size="12" fill="#4A90D9">✏</text>
+  <rect x="633" y="290" width="28" height="26" rx="4" fill="white" stroke="#E74C3C" stroke-width="1"/>
+  <text x="647" y="308" text-anchor="middle" font-size="12" fill="#E74C3C">✕</text>
+
+  <!-- Item 2 -->
+  <rect x="285" y="330" width="400" height="45" rx="4" fill="white" stroke="#E8E8E8" stroke-width="1"/>
+  <text x="300" y="358" font-size="14" fill="#333">Филаментная</text>
+  <text x="300" y="370" font-size="9" fill="#999">id: 2 · Товаров: 87</text>
+  <rect x="600" y="340" width="28" height="26" rx="4" fill="white" stroke="#4A90D9" stroke-width="1"/>
+  <text x="614" y="358" text-anchor="middle" font-size="12" fill="#4A90D9">✏</text>
+  <rect x="633" y="340" width="28" height="26" rx="4" fill="white" stroke="#E74C3C" stroke-width="1"/>
+  <text x="647" y="358" text-anchor="middle" font-size="12" fill="#E74C3C">✕</text>
+
+  <!-- Item 3 -->
+  <rect x="285" y="380" width="400" height="45" rx="4" fill="#FAFBFC" stroke="#E8E8E8" stroke-width="1"/>
+  <text x="300" y="408" font-size="14" fill="#333">Галогенная</text>
+  <text x="300" y="420" font-size="9" fill="#999">id: 3 · Товаров: 32</text>
+  <rect x="600" y="390" width="28" height="26" rx="4" fill="white" stroke="#4A90D9" stroke-width="1"/>
+  <text x="614" y="408" text-anchor="middle" font-size="12" fill="#4A90D9">✏</text>
+  <rect x="633" y="390" width="28" height="26" rx="4" fill="white" stroke="#E74C3C" stroke-width="1"/>
+  <text x="647" y="408" text-anchor="middle" font-size="12" fill="#E74C3C">✕</text>
+
+  <!-- Item 4 -->
+  <rect x="285" y="430" width="400" height="45" rx="4" fill="white" stroke="#E8E8E8" stroke-width="1"/>
+  <text x="300" y="458" font-size="14" fill="#333">Люминесцентная</text>
+  <text x="300" y="470" font-size="9" fill="#999">id: 4 · Товаров: 18</text>
+  <rect x="600" y="440" width="28" height="26" rx="4" fill="white" stroke="#4A90D9" stroke-width="1"/>
+  <text x="614" y="458" text-anchor="middle" font-size="12" fill="#4A90D9">✏</text>
+  <rect x="633" y="440" width="28" height="26" rx="4" fill="white" stroke="#E74C3C" stroke-width="1"/>
+  <text x="647" y="458" text-anchor="middle" font-size="12" fill="#E74C3C">✕</text>
+
+  <!-- Item 5 (editing mode) -->
+  <rect x="285" y="480" width="400" height="55" rx="4" fill="#EBF5FB" stroke="#4A90D9" stroke-width="2"/>
+  <rect x="300" y="490" width="230" height="30" class="input"/>
+  <text x="315" y="510" font-size="13" fill="#333">Энергосберегающая</text>
+  <rect x="540" y="490" width="60" height="30" class="btn"/>
+  <text x="570" y="510" text-anchor="middle" font-size="11" fill="white" font-weight="bold">💾</text>
+  <rect x="606" y="490" width="55" height="30" rx="4" fill="white" stroke="#CCC" stroke-width="1"/>
+  <text x="633" y="510" text-anchor="middle" font-size="11" fill="#666">✕</text>
+
+
+  <text x="285" y="629" class="small" fill="#E74C3C">⚠ Удаление невозможно если есть связанные товары</text>
+
+  <!-- ========== SECOND COLUMN: Цоколи (Socket) ========== -->
+  <rect x="730" y="160" width="440" height="500" class="card"/>
+  
+  <text x="750" y="190" font-size="16" fill="#333" font-weight="bold">🔌 Цоколи (Socket)</text>
+
+  <line x1="750" y1="218" x2="1150" y2="218" class="divider"/>
+
+  <!-- Add new form -->
+  <rect x="750" y="230" width="300" height="35" class="input"/>
+  <text x="765" y="253" font-size="12" fill="#AAA">Новый цоколь...</text>
+  <rect x="1060" y="230" width="90" height="35" class="btn-success"/>
+  <text x="1105" y="253" text-anchor="middle" font-size="12" fill="white" font-weight="bold">+ Добавить</text>
+
+  <!-- Socket items -->
+  <rect x="750" y="280" width="400" height="40" rx="4" fill="#FAFBFC" stroke="#E8E8E8" stroke-width="1"/>
+  <text x="765" y="305" font-size="14" fill="#333">E27</text>
+  <text x="810" y="305" font-size="10" fill="#999">(стандартный)</text>
+  <text x="765" y="316" font-size="9" fill="#999">id: 1 · Товаров: 120</text>
+  <rect x="1065" y="288" width="28" height="26" rx="4" fill="white" stroke="#4A90D9" stroke-width="1"/>
+  <text x="1079" y="306" text-anchor="middle" font-size="12" fill="#4A90D9">✏</text>
+  <rect x="1098" y="288" width="28" height="26" rx="4" fill="white" stroke="#E74C3C" stroke-width="1"/>
+  <text x="1112" y="306" text-anchor="middle" font-size="12" fill="#E74C3C">✕</text>
+
+  <rect x="750" y="325" width="400" height="40" rx="4" fill="white" stroke="#E8E8E8" stroke-width="1"/>
+  <text x="765" y="350" font-size="14" fill="#333">E14</text>
+  <text x="800" y="350" font-size="10" fill="#999">(миньон)</text>
+  <text x="765" y="361" font-size="9" fill="#999">id: 2 · Товаров: 85</text>
+  <rect x="1065" y="333" width="28" height="26" rx="4" fill="white" stroke="#4A90D9" stroke-width="1"/>
+  <text x="1079" y="351" text-anchor="middle" font-size="12" fill="#4A90D9">✏</text>
+  <rect x="1098" y="333" width="28" height="26" rx="4" fill="white" stroke="#E74C3C" stroke-width="1"/>
+  <text x="1112" y="351" text-anchor="middle" font-size="12" fill="#E74C3C">✕</text>
+
+  <rect x="750" y="370" width="400" height="40" rx="4" fill="#FAFBFC" stroke="#E8E8E8" stroke-width="1"/>
+  <text x="765" y="395" font-size="14" fill="#333">GU10</text>
+  <text x="814" y="395" font-size="10" fill="#999">(точечный)</text>
+  <text x="765" y="406" font-size="9" fill="#999">id: 3 · Товаров: 45</text>
+  <rect x="1065" y="378" width="28" height="26" rx="4" fill="white" stroke="#4A90D9" stroke-width="1"/>
+  <text x="1079" y="396" text-anchor="middle" font-size="12" fill="#4A90D9">✏</text>
+  <rect x="1098" y="378" width="28" height="26" rx="4" fill="white" stroke="#E74C3C" stroke-width="1"/>
+  <text x="1112" y="396" text-anchor="middle" font-size="12" fill="#E74C3C">✕</text>
+
+  <rect x="750" y="415" width="400" height="40" rx="4" fill="white" stroke="#E8E8E8" stroke-width="1"/>
+  <text x="765" y="440" font-size="14" fill="#333">G13</text>
+  <text x="800" y="440" font-size="10" fill="#999">(трубчатый)</text>
+  <text x="765" y="451" font-size="9" fill="#999">id: 4 · Товаров: 28</text>
+  <rect x="1065" y="423" width="28" height="26" rx="4" fill="white" stroke="#4A90D9" stroke-width="1"/>
+  <text x="1079" y="441" text-anchor="middle" font-size="12" fill="#4A90D9">✏</text>
+  <rect x="1098" y="423" width="28" height="26" rx="4" fill="white" stroke="#E74C3C" stroke-width="1"/>
+  <text x="1112" y="441" text-anchor="middle" font-size="12" fill="#E74C3C">✕</text>
+
+  <rect x="750" y="460" width="400" height="40" rx="4" fill="#FAFBFC" stroke="#E8E8E8" stroke-width="1"/>
+  <text x="765" y="485" font-size="14" fill="#333">GU5.3</text>
+  <text x="817" y="485" font-size="10" fill="#999">(MR16)</text>
+  <text x="765" y="496" font-size="9" fill="#999">id: 5 · Товаров: 15</text>
+  <rect x="1065" y="468" width="28" height="26" rx="4" fill="white" stroke="#4A90D9" stroke-width="1"/>
+  <text x="1079" y="486" text-anchor="middle" font-size="12" fill="#4A90D9">✏</text>
+  <rect x="1098" y="468" width="28" height="26" rx="4" fill="white" stroke="#E74C3C" stroke-width="1"/>
+  <text x="1112" y="486" text-anchor="middle" font-size="12" fill="#E74C3C">✕</text>
+
+
+
+  <!-- ========== THIRD ROW: Поставщики (Supplier) ========== -->
+  <rect x="265" y="680" width="440" height="420" class="card"/>
+  
+  <text x="285" y="710" font-size="16" fill="#333" font-weight="bold">🏭 Поставщики (Supplier)</text>
+
+  <line x1="285" y1="738" x2="685" y2="738" class="divider"/>
+
+  <!-- Add new form -->
+  <rect x="285" y="750" width="300" height="35" class="input"/>
+  <text x="300" y="773" font-size="12" fill="#AAA">Название поставщика...</text>
+  <rect x="595" y="750" width="90" height="35" class="btn-success"/>
+  <text x="640" y="773" text-anchor="middle" font-size="12" fill="white" font-weight="bold">+ Добавить</text>
+
+  <rect x="285" y="800" width="400" height="45" rx="4" fill="#FAFBFC" stroke="#E8E8E8" stroke-width="1"/>
+  <text x="300" y="828" font-size="14" fill="#333">ООО СветТехно</text>
+  <text x="300" y="840" font-size="9" fill="#999">id: 1 · Товаров: 89</text>
+  <rect x="600" y="810" width="28" height="26" rx="4" fill="white" stroke="#4A90D9" stroke-width="1"/>
+  <text x="614" y="828" text-anchor="middle" font-size="12" fill="#4A90D9">✏</text>
+  <rect x="633" y="810" width="28" height="26" rx="4" fill="white" stroke="#E74C3C" stroke-width="1"/>
+  <text x="647" y="828" text-anchor="middle" font-size="12" fill="#E74C3C">✕</text>
+
+  <rect x="285" y="850" width="400" height="45" rx="4" fill="white" stroke="#E8E8E8" stroke-width="1"/>
+  <text x="300" y="878" font-size="14" fill="#333">ЗАО ЛюменПро</text>
+  <text x="300" y="890" font-size="9" fill="#999">id: 2 · Товаров: 67</text>
+  <rect x="600" y="860" width="28" height="26" rx="4" fill="white" stroke="#4A90D9" stroke-width="1"/>
+  <text x="614" y="878" text-anchor="middle" font-size="12" fill="#4A90D9">✏</text>
+  <rect x="633" y="860" width="28" height="26" rx="4" fill="white" stroke="#E74C3C" stroke-width="1"/>
+  <text x="647" y="878" text-anchor="middle" font-size="12" fill="#E74C3C">✕</text>
+
+  <rect x="285" y="900" width="400" height="45" rx="4" fill="#FAFBFC" stroke="#E8E8E8" stroke-width="1"/>
+  <text x="300" y="928" font-size="14" fill="#333">ИП Фонарёв А.В.</text>
+  <text x="300" y="940" font-size="9" fill="#999">id: 3 · Товаров: 45</text>
+  <rect x="600" y="910" width="28" height="26" rx="4" fill="white" stroke="#4A90D9" stroke-width="1"/>
+  <text x="614" y="928" text-anchor="middle" font-size="12" fill="#4A90D9">✏</text>
+  <rect x="633" y="910" width="28" height="26" rx="4" fill="white" stroke="#E74C3C" stroke-width="1"/>
+  <text x="647" y="928" text-anchor="middle" font-size="12" fill="#E74C3C">✕</text>
+
+
+
+  <!-- ========== FOURTH CARD: Формы + Категории info ========== -->
+  <rect x="730" y="680" width="440" height="420" class="card"/>
+  
+  <text x="750" y="710" font-size="16" fill="#333" font-weight="bold">🔷 Формы ламп (BulbShape)</text>
+
+  <line x1="750" y1="738" x2="1150" y2="738" class="divider"/>
+
+  <!-- Add new form -->
+  <rect x="750" y="750" width="300" height="35" class="input"/>
+  <text x="765" y="773" font-size="12" fill="#AAA">Новая форма лампы...</text>
+  <rect x="1060" y="750" width="90" height="35" class="btn-success"/>
+  <text x="1105" y="773" text-anchor="middle" font-size="12" fill="white" font-weight="bold">+ Добавить</text>
+
+  <rect x="750" y="800" width="400" height="40" rx="4" fill="#FAFBFC" stroke="#E8E8E8" stroke-width="1"/>
+  <text x="765" y="825" font-size="14" fill="#333">A60 (груша)</text>
+  <text x="765" y="836" font-size="9" fill="#999">id: 1 · Товаров: 95</text>
+  <rect x="1065" y="808" width="28" height="26" rx="4" fill="white" stroke="#4A90D9" stroke-width="1"/>
+  <text x="1079" y="826" text-anchor="middle" font-size="12" fill="#4A90D9">✏</text>
+  <rect x="1098" y="808" width="28" height="26" rx="4" fill="white" stroke="#E74C3C" stroke-width="1"/>
+  <text x="1112" y="826" text-anchor="middle" font-size="12" fill="#E74C3C">✕</text>
+
+  <rect x="750" y="845" width="400" height="40" rx="4" fill="white" stroke="#E8E8E8" stroke-width="1"/>
+  <text x="765" y="870" font-size="14" fill="#333">C37 (свеча)</text>
+  <text x="765" y="881" font-size="9" fill="#999">id: 2 · Товаров: 42</text>
+  <rect x="1065" y="853" width="28" height="26" rx="4" fill="white" stroke="#4A90D9" stroke-width="1"/>
+  <text x="1079" y="871" text-anchor="middle" font-size="12" fill="#4A90D9">✏</text>
+  <rect x="1098" y="853" width="28" height="26" rx="4" fill="white" stroke="#E74C3C" stroke-width="1"/>
+  <text x="1112" y="871" text-anchor="middle" font-size="12" fill="#E74C3C">✕</text>
+
+  <rect x="750" y="890" width="400" height="40" rx="4" fill="#FAFBFC" stroke="#E8E8E8" stroke-width="1"/>
+  <text x="765" y="915" font-size="14" fill="#333">MR16 (точечная)</text>
+  <text x="765" y="926" font-size="9" fill="#999">id: 3 · Товаров: 30</text>
+  <rect x="1065" y="898" width="28" height="26" rx="4" fill="white" stroke="#4A90D9" stroke-width="1"/>
+  <text x="1079" y="916" text-anchor="middle" font-size="12" fill="#4A90D9">✏</text>
+  <rect x="1098" y="898" width="28" height="26" rx="4" fill="white" stroke="#E74C3C" stroke-width="1"/>
+  <text x="1112" y="916" text-anchor="middle" font-size="12" fill="#E74C3C">✕</text>
+
+  <rect x="750" y="935" width="400" height="40" rx="4" fill="white" stroke="#E8E8E8" stroke-width="1"/>
+  <text x="765" y="960" font-size="14" fill="#333">T8 (трубка)</text>
+  <text x="765" y="971" font-size="9" fill="#999">id: 4 · Товаров: 28</text>
+  <rect x="1065" y="943" width="28" height="26" rx="4" fill="white" stroke="#4A90D9" stroke-width="1"/>
+  <text x="1079" y="961" text-anchor="middle" font-size="12" fill="#4A90D9">✏</text>
+  <rect x="1098" y="943" width="28" height="26" rx="4" fill="white" stroke="#E74C3C" stroke-width="1"/>
+  <text x="1112" y="961" text-anchor="middle" font-size="12" fill="#E74C3C">✕</text>
+
+
+
+  <!-- Delete confirmation modal preview -->
+  <rect x="350" y="1115" width="500" height="55" rx="8" fill="white" stroke="#E74C3C" stroke-width="2"/>
+  <text x="370" y="1140" font-size="12" fill="#E74C3C" font-weight="bold">⚠ Подтверждение удаления:</text>
+  <text x="370" y="1157" font-size="11" fill="#666">«Вы уверены? У этого элемента X связанных товаров.» → [Удалить] [Отмена]</text>
+
+</svg>

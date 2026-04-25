@@ -1,0 +1,219 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1600" font-family="Arial, Helvetica, sans-serif">
+  <defs>
+    <style>
+      .title { font-size: 24px; font-weight: bold; fill: #333; }
+      .subtitle { font-size: 16px; fill: #555; }
+      .label { font-size: 13px; fill: #666; }
+      .small { font-size: 11px; fill: #888; }
+      .btn-text { font-size: 14px; fill: white; font-weight: bold; }
+      .link { font-size: 13px; fill: #4A90D9; }
+      .section-title { font-size: 18px; font-weight: bold; fill: #333; }
+      .placeholder { fill: #E8E8E8; stroke: #CCC; stroke-width: 1; }
+      .card { fill: white; stroke: #DDD; stroke-width: 1; rx: 8; }
+      .btn { fill: #4A90D9; rx: 6; }
+      .btn-outline { fill: none; stroke: #4A90D9; stroke-width: 2; rx: 6; }
+      .header-bg { fill: #2C3E50; }
+      .footer-bg { fill: #34495E; }
+      .banner-bg { fill: #F0F4F8; stroke: #D0D8E0; stroke-width: 1; rx: 8; }
+      .divider { stroke: #E0E0E0; stroke-width: 1; }
+      .icon-placeholder { fill: #D0D0D0; stroke: #BBB; stroke-width: 1; }
+    </style>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="1600" fill="#F8F9FA"/>
+
+  <!-- Page Title -->
+
+  <!-- ========== HEADER ========== -->
+  <rect x="0" y="40" width="1200" height="70" class="header-bg"/>
+  
+  <!-- Logo -->
+  <rect x="40" y="52" width="45" height="45" rx="8" fill="#F39C12"/>
+  <text x="63" y="82" text-anchor="middle" font-size="18" fill="white" font-weight="bold">💡</text>
+  <text x="100" y="72" font-size="18" fill="white" font-weight="bold">ЛампоМаркет</text>
+  <text x="100" y="88" font-size="10" fill="#BDC3C7">Завод-производитель</text>
+
+  <!-- Navigation -->
+  <text x="380" y="80" font-size="14" fill="#ECF0F1" font-weight="bold" text-decoration="underline">Главная</text>
+  <text x="490" y="80" font-size="14" fill="#BDC3C7">Каталог</text>
+  <text x="580" y="80" font-size="14" fill="#BDC3C7">О компании</text>
+  <text x="690" y="80" font-size="14" fill="#BDC3C7">Контакты</text>
+
+  <!-- Cart Icon -->
+  <rect x="1050" y="58" width="110" height="36" rx="18" fill="none" stroke="#BDC3C7" stroke-width="1"/>
+  <text x="1080" y="81" font-size="16">🛒</text>
+  <text x="1100" y="80" font-size="13" fill="#ECF0F1">Корзина (0)</text>
+
+  <!-- ========== HERO BANNER / SLIDER ========== -->
+  <rect x="40" y="135" width="1120" height="350" rx="12" class="banner-bg"/>
+  
+  <!-- Slider dots -->
+  <circle cx="560" cy="460" r="6" fill="#4A90D9"/>
+  <circle cx="580" cy="460" r="6" fill="#CCC"/>
+  <circle cx="600" cy="460" r="6" fill="#CCC"/>
+  <circle cx="620" cy="460" r="6" fill="#CCC"/>
+
+  <!-- Banner content -->
+  <rect x="80" y="175" width="450" height="250" rx="8" fill="#DDE4EC"/>
+  <text x="305" y="310" text-anchor="middle" font-size="16" fill="#888">[ Изображение баннера ]</text>
+  
+  <text x="580" y="210" class="title" font-size="28" fill="#2C3E50">Промо-баннер</text>
+  <text x="580" y="245" class="subtitle" fill="#7F8C8D">Акционное предложение на LED-лампы</text>
+  <text x="580" y="270" class="subtitle" fill="#7F8C8D">нового поколения. Скидки до 30%!</text>
+
+  
+  <rect x="580" y="335" width="200" height="45" class="btn"/>
+  <text x="680" y="363" text-anchor="middle" class="btn-text">Перейти к каталогу →</text>
+
+  <!-- Slider arrows -->
+  <rect x="50" y="285" width="40" height="40" rx="20" fill="white" stroke="#CCC" stroke-width="1"/>
+  <text x="70" y="311" text-anchor="middle" font-size="18" fill="#666">‹</text>
+  <rect x="1110" y="285" width="40" height="40" rx="20" fill="white" stroke="#CCC" stroke-width="1"/>
+  <text x="1130" y="311" text-anchor="middle" font-size="18" fill="#666">›</text>
+
+  <!-- ========== SECTION: Акционные предложения ========== -->
+  <text x="60" y="520" class="section-title" font-size="22">🔥 Акционные предложения</text>
+  <line x1="60" y1="530" x2="1140" y2="530" class="divider"/>
+
+  <!-- Promo cards row -->
+  <!-- Card 1 -->
+  <rect x="60" y="550" width="340" height="320" class="card"/>
+  <rect x="75" y="565" width="310" height="170" rx="6" class="placeholder"/>
+  <text x="230" y="655" text-anchor="middle" class="label">[ Фото товара ]</text>
+  <!-- Discount badge -->
+  <rect x="85" y="575" width="70" height="28" rx="14" fill="#E74C3C"/>
+  <text x="120" y="594" text-anchor="middle" font-size="12" fill="white" font-weight="bold">−20%</text>
+  
+  <text x="85" y="760" font-size="15" fill="#333" font-weight="bold">LED Лампа E27 10W</text>
+  <text x="85" y="780" class="small">Категория: LED / Цоколь: E27</text>
+  <text x="85" y="805" font-size="13" fill="#95A5A6" text-decoration="line-through">250 ₽</text>
+  <text x="155" y="805" font-size="16" fill="#E74C3C" font-weight="bold">200 ₽</text>
+  <rect x="85" y="820" width="130" height="35" class="btn"/>
+  <text x="150" y="842" text-anchor="middle" font-size="12" fill="white" font-weight="bold">В корзину 🛒</text>
+
+  <!-- Card 2 -->
+  <rect x="430" y="550" width="340" height="320" class="card"/>
+  <rect x="445" y="565" width="310" height="170" rx="6" class="placeholder"/>
+  <text x="600" y="655" text-anchor="middle" class="label">[ Фото товара ]</text>
+  <rect x="455" y="575" width="70" height="28" rx="14" fill="#E74C3C"/>
+  <text x="490" y="594" text-anchor="middle" font-size="12" fill="white" font-weight="bold">−15%</text>
+  
+  <text x="455" y="760" font-size="15" fill="#333" font-weight="bold">Филаментная A60</text>
+  <text x="455" y="780" class="small">Категория: Филамент / Цоколь: E14</text>
+  <text x="455" y="805" font-size="13" fill="#95A5A6" text-decoration="line-through">180 ₽</text>
+  <text x="525" y="805" font-size="16" fill="#E74C3C" font-weight="bold">153 ₽</text>
+  <rect x="455" y="820" width="130" height="35" class="btn"/>
+  <text x="520" y="842" text-anchor="middle" font-size="12" fill="white" font-weight="bold">В корзину 🛒</text>
+
+  <!-- Card 3 -->
+  <rect x="800" y="550" width="340" height="320" class="card"/>
+  <rect x="815" y="565" width="310" height="170" rx="6" class="placeholder"/>
+  <text x="970" y="655" text-anchor="middle" class="label">[ Фото товара ]</text>
+  <rect x="825" y="575" width="70" height="28" rx="14" fill="#E74C3C"/>
+  <text x="860" y="594" text-anchor="middle" font-size="12" fill="white" font-weight="bold">−30%</text>
+  
+  <text x="825" y="760" font-size="15" fill="#333" font-weight="bold">Точечный GU10</text>
+  <text x="825" y="780" class="small">Категория: Точечные / Цоколь: GU10</text>
+  <text x="825" y="805" font-size="13" fill="#95A5A6" text-decoration="line-through">320 ₽</text>
+  <text x="895" y="805" font-size="16" fill="#E74C3C" font-weight="bold">224 ₽</text>
+  <rect x="825" y="820" width="130" height="35" class="btn"/>
+  <text x="890" y="842" text-anchor="middle" font-size="12" fill="white" font-weight="bold">В корзину 🛒</text>
+
+  <!-- ========== SECTION: Популярные товары ========== -->
+  <text x="60" y="930" class="section-title" font-size="22">⭐ Популярные товары</text>
+  <line x1="60" y1="940" x2="1140" y2="940" class="divider"/>
+
+  <!-- Smaller product cards row -->
+  <g transform="translate(60, 960)">
+    <rect width="250" height="200" class="card"/>
+    <rect x="15" y="10" width="220" height="110" rx="4" class="placeholder"/>
+    <text x="125" y="70" text-anchor="middle" class="small">[ Фото ]</text>
+    <text x="15" y="140" font-size="13" fill="#333" font-weight="bold">LED Лампа E14</text>
+    <text x="15" y="158" font-size="12" fill="#7F8C8D">800 лм · 10W</text>
+    <text x="15" y="180" font-size="15" fill="#2C3E50" font-weight="bold">150 ₽</text>
+    <text x="180" y="180" font-size="12" fill="#4A90D9">Подробнее →</text>
+  </g>
+
+  <g transform="translate(340, 960)">
+    <rect width="250" height="200" class="card"/>
+    <rect x="15" y="10" width="220" height="110" rx="4" class="placeholder"/>
+    <text x="125" y="70" text-anchor="middle" class="small">[ Фото ]</text>
+    <text x="15" y="140" font-size="13" fill="#333" font-weight="bold">Трубка T8 G13</text>
+    <text x="15" y="158" font-size="12" fill="#7F8C8D">1600 лм · 18W</text>
+    <text x="15" y="180" font-size="15" fill="#2C3E50" font-weight="bold">320 ₽</text>
+    <text x="180" y="180" font-size="12" fill="#4A90D9">Подробнее →</text>
+  </g>
+
+  <g transform="translate(620, 960)">
+    <rect width="250" height="200" class="card"/>
+    <rect x="15" y="10" width="220" height="110" rx="4" class="placeholder"/>
+    <text x="125" y="70" text-anchor="middle" class="small">[ Фото ]</text>
+    <text x="15" y="140" font-size="13" fill="#333" font-weight="bold">Свеча C37</text>
+    <text x="15" y="158" font-size="12" fill="#7F8C8D">450 лм · 5W</text>
+    <text x="15" y="180" font-size="15" fill="#2C3E50" font-weight="bold">90 ₽</text>
+    <text x="180" y="180" font-size="12" fill="#4A90D9">Подробнее →</text>
+  </g>
+
+  <g transform="translate(900, 960)">
+    <rect width="250" height="200" class="card"/>
+    <rect x="15" y="10" width="220" height="110" rx="4" class="placeholder"/>
+    <text x="125" y="70" text-anchor="middle" class="small">[ Фото ]</text>
+    <text x="15" y="140" font-size="13" fill="#333" font-weight="bold">Прожектор 50W</text>
+    <text x="15" y="158" font-size="12" fill="#7F8C8D">4000 лм · IP65</text>
+    <text x="15" y="180" font-size="15" fill="#2C3E50" font-weight="bold">890 ₽</text>
+    <text x="180" y="180" font-size="12" fill="#4A90D9">Подробнее →</text>
+  </g>
+
+  <!-- ========== SECTION: Преимущества ========== -->
+  <text x="60" y="1230" class="section-title" font-size="22">🏭 Преимущества покупки у завода</text>
+  <line x1="60" y1="1240" x2="1140" y2="1240" class="divider"/>
+
+  <!-- Advantage blocks -->
+  <g transform="translate(60, 1260)">
+    <rect width="250" height="100" rx="8" fill="#EBF5FB" stroke="#AED6F1" stroke-width="1"/>
+    <text x="125" y="35" text-anchor="middle" font-size="28">🏷️</text>
+    <text x="125" y="60" text-anchor="middle" font-size="14" fill="#2C3E50" font-weight="bold">Цены от производителя</text>
+    <text x="125" y="80" text-anchor="middle" class="small">Без посредников и наценок</text>
+  </g>
+
+  <g transform="translate(340, 1260)">
+    <rect width="250" height="100" rx="8" fill="#E8F8F5" stroke="#A3E4D7" stroke-width="1"/>
+    <text x="125" y="35" text-anchor="middle" font-size="28">🚚</text>
+    <text x="125" y="60" text-anchor="middle" font-size="14" fill="#2C3E50" font-weight="bold">Курьерская доставка</text>
+    <text x="125" y="80" text-anchor="middle" class="small">По всей России</text>
+  </g>
+
+  <g transform="translate(620, 1260)">
+    <rect width="250" height="100" rx="8" fill="#FEF9E7" stroke="#F9E79F" stroke-width="1"/>
+    <text x="125" y="35" text-anchor="middle" font-size="28">✅</text>
+    <text x="125" y="60" text-anchor="middle" font-size="14" fill="#2C3E50" font-weight="bold">Гарантия качества</text>
+    <text x="125" y="80" text-anchor="middle" class="small">Сертифицированная продукция</text>
+  </g>
+
+  <g transform="translate(900, 1260)">
+    <rect width="250" height="100" rx="8" fill="#FDEDEC" stroke="#F5B7B1" stroke-width="1"/>
+    <text x="125" y="35" text-anchor="middle" font-size="28">📦</text>
+    <text x="125" y="60" text-anchor="middle" font-size="14" fill="#2C3E50" font-weight="bold">Оптовые поставки</text>
+    <text x="125" y="80" text-anchor="middle" class="small">Для бизнеса и дома</text>
+  </g>
+
+  <!-- ========== FOOTER ========== -->
+  <rect x="0" y="1420" width="1200" height="180" class="footer-bg"/>
+  
+  <text x="60" y="1460" font-size="16" fill="white" font-weight="bold">ЛампоМаркет</text>
+  <text x="60" y="1480" font-size="12" fill="#BDC3C7">© 2026 Завод-производитель светотехники</text>
+  
+  <text x="400" y="1455" font-size="13" fill="#ECF0F1" font-weight="bold">Навигация</text>
+  <text x="400" y="1475" font-size="12" fill="#BDC3C7">Каталог товаров</text>
+  <text x="400" y="1492" font-size="12" fill="#BDC3C7">О компании</text>
+  <text x="400" y="1509" font-size="12" fill="#BDC3C7">Контакты</text>
+
+  <text x="650" y="1455" font-size="13" fill="#ECF0F1" font-weight="bold">Контакты</text>
+  <text x="650" y="1475" font-size="12" fill="#BDC3C7">📞 +7 (495) 123-45-67</text>
+  <text x="650" y="1492" font-size="12" fill="#BDC3C7">📧 info@lampomarket.ru</text>
+  <text x="650" y="1509" font-size="12" fill="#BDC3C7">📍 г. Москва, ул. Заводская, 1</text>
+
+
+
+</svg>
