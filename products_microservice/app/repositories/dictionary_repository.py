@@ -3,9 +3,10 @@ from __future__ import annotations
 from typing import Any, Generic, TypeVar
 
 from sqlalchemy import select
+from sqlalchemy.exc import IntegrityError
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from app.core.errors import NotFoundError
+from app.core.errors import ConflictError, NotFoundError
 from app.models.base import Base
 
 ModelT = TypeVar("ModelT", bound=Base)
@@ -29,7 +30,13 @@ class DictionaryRepository(Generic[ModelT]):
     async def create(self, *, name: str, **extra: Any) -> ModelT:
         obj = self.model(name=name, **extra)
         self.session.add(obj)
-        await self.session.flush()
+        try:
+            await self.session.flush()
+        except IntegrityError as exc:
+            await self.session.rollback()
+            raise ConflictError(
+                f"{self.model.__name__} with name={name!r} already exists"
+            ) from exc
         await self.session.refresh(obj)
         return obj
 

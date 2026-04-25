@@ -6,6 +6,7 @@ from contextlib import asynccontextmanager
 import httpx
 from fastapi import FastAPI, Request
 from fastapi.responses import JSONResponse
+from sqlalchemy.exc import IntegrityError
 
 from app.core.config import get_settings
 from app.core.errors import (
@@ -50,6 +51,16 @@ async def _validation_handler(
     _request: Request, exc: ValidationError
 ) -> JSONResponse:
     return JSONResponse(status_code=422, content={"detail": str(exc)})
+
+
+@app.exception_handler(IntegrityError)
+async def _integrity_handler(
+    _request: Request, exc: IntegrityError
+) -> JSONResponse:
+    return JSONResponse(
+        status_code=409,
+        content={"detail": "database integrity constraint violated"},
+    )
 
 
 @app.exception_handler(ProductsServiceUnavailable)
