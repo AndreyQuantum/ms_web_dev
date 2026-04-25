@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import pytest
 
-from app.core.errors import NotFoundError
+from app.core.errors import ConflictError, NotFoundError
 from app.models import Category
 from app.repositories.dictionary_repository import DictionaryRepository
 
@@ -63,3 +63,12 @@ async def test_delete_missing_raises_not_found(db_session) -> None:
     repo = DictionaryRepository(db_session, Category)
     with pytest.raises(NotFoundError):
         await repo.delete(424242)
+
+
+@pytest.mark.asyncio
+async def test_create_duplicate_name_raises_conflict(db_session) -> None:
+    repo = DictionaryRepository(db_session, Category)
+    await repo.create(name="LED")
+    await db_session.commit()
+    with pytest.raises(ConflictError):
+        await repo.create(name="LED")

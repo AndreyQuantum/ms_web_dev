@@ -1,0 +1,958 @@
+{
+	"info": {
+		"_postman_id": "a1b2c3d4-e5f6-7890-1234-567890abcdef",
+		"name": "Lightbulb Factory API — Demo",
+		"description": "Демо-сценарий API для интернет-магазина завода Лампочек. Папки и запросы пронумерованы — кликай по порядку (Send → следующий). Tests-скрипты автоматически сохраняют id'шники в environment, копировать ничего не нужно.\n\nПеред запуском:\n1. Подними сервисы с чистой БД: `docker compose down -v && docker compose up -d`.\n2. В environment должны быть переменные `product_base_url` (например http://localhost:8002) и `order_base_url` (http://localhost:8003).",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "01 Health",
+			"item": [
+				{
+					"name": "1.1 Health — Products",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{product_base_url}}/health",
+							"host": ["{{product_base_url}}"],
+							"path": ["health"]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "1.2 Health — Orders",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{order_base_url}}/health",
+							"host": ["{{order_base_url}}"],
+							"path": ["health"]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "02 Dictionaries",
+			"item": [
+				{
+					"name": "2.1 Create Category",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (pm.response.code === 201) {",
+									"  pm.environment.set('cat_id', pm.response.json().id);",
+									"}"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [{"key": "Content-Type", "value": "application/json"}],
+						"body": {"mode": "raw", "raw": "{\n  \"name\": \"demo-LED\"\n}"},
+						"url": {
+							"raw": "{{product_base_url}}/api/v1/categories",
+							"host": ["{{product_base_url}}"],
+							"path": ["api", "v1", "categories"]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "2.2 Create Bulb Type",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (pm.response.code === 201) {",
+									"  pm.environment.set('bt_id', pm.response.json().id);",
+									"}"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [{"key": "Content-Type", "value": "application/json"}],
+						"body": {"mode": "raw", "raw": "{\n  \"name\": \"demo-SMD\"\n}"},
+						"url": {
+							"raw": "{{product_base_url}}/api/v1/bulb-types",
+							"host": ["{{product_base_url}}"],
+							"path": ["api", "v1", "bulb-types"]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "2.3 Create Bulb Shape",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (pm.response.code === 201) {",
+									"  pm.environment.set('bs_id', pm.response.json().id);",
+									"}"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [{"key": "Content-Type", "value": "application/json"}],
+						"body": {"mode": "raw", "raw": "{\n  \"name\": \"demo-A60\"\n}"},
+						"url": {
+							"raw": "{{product_base_url}}/api/v1/bulb-shapes",
+							"host": ["{{product_base_url}}"],
+							"path": ["api", "v1", "bulb-shapes"]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "2.4 Create Socket",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (pm.response.code === 201) {",
+									"  pm.environment.set('sock_id', pm.response.json().id);",
+									"}"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [{"key": "Content-Type", "value": "application/json"}],
+						"body": {"mode": "raw", "raw": "{\n  \"name\": \"demo-E27\"\n}"},
+						"url": {
+							"raw": "{{product_base_url}}/api/v1/sockets",
+							"host": ["{{product_base_url}}"],
+							"path": ["api", "v1", "sockets"]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "2.5 Create Supplier",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (pm.response.code === 201) {",
+									"  pm.environment.set('sup_id', pm.response.json().id);",
+									"}"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [{"key": "Content-Type", "value": "application/json"}],
+						"body": {"mode": "raw", "raw": "{\n  \"name\": \"demo-Acme\"\n}"},
+						"url": {
+							"raw": "{{product_base_url}}/api/v1/suppliers",
+							"host": ["{{product_base_url}}"],
+							"path": ["api", "v1", "suppliers"]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "2.6 Create Promo",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (pm.response.code === 201) {",
+									"  pm.environment.set('promo_id', pm.response.json().id);",
+									"}"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [{"key": "Content-Type", "value": "application/json"}],
+						"body": {"mode": "raw", "raw": "{\n  \"name\": \"demo-Spring\",\n  \"discount_percent\": 15\n}"},
+						"url": {
+							"raw": "{{product_base_url}}/api/v1/promos",
+							"host": ["{{product_base_url}}"],
+							"path": ["api", "v1", "promos"]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "2.7 List Categories",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{product_base_url}}/api/v1/categories",
+							"host": ["{{product_base_url}}"],
+							"path": ["api", "v1", "categories"]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "2.8 Duplicate Category — expect 409",
+					"request": {
+						"method": "POST",
+						"header": [{"key": "Content-Type", "value": "application/json"}],
+						"body": {"mode": "raw", "raw": "{\n  \"name\": \"demo-LED\"\n}"},
+						"url": {
+							"raw": "{{product_base_url}}/api/v1/categories",
+							"host": ["{{product_base_url}}"],
+							"path": ["api", "v1", "categories"]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "2.9 Empty Name — expect 422",
+					"request": {
+						"method": "POST",
+						"header": [{"key": "Content-Type", "value": "application/json"}],
+						"body": {"mode": "raw", "raw": "{\n  \"name\": \"\"\n}"},
+						"url": {
+							"raw": "{{product_base_url}}/api/v1/categories",
+							"host": ["{{product_base_url}}"],
+							"path": ["api", "v1", "categories"]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "03 Products",
+			"item": [
+				{
+					"name": "3.1 Create Product",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (pm.response.code === 201) {",
+									"  pm.environment.set('product_id', pm.response.json().id);",
+									"}"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [{"key": "Content-Type", "value": "application/json"}],
+						"body": {"mode": "raw", "raw": "{\n  \"title\": \"Лампа LED 10W demo\",\n  \"description\": \"Демо-товар\",\n  \"price\": \"450.00\",\n  \"quantity\": 100,\n  \"brightness_lm\": 800,\n  \"is_archived\": false,\n  \"available_from\": \"2026-04-12\",\n  \"category_id\": \"{{cat_id}}\",\n  \"bulb_type_id\": \"{{bt_id}}\",\n  \"bulb_shape_id\": \"{{bs_id}}\",\n  \"socket_id\": \"{{sock_id}}\",\n  \"supplier_id\": \"{{sup_id}}\",\n  \"promo_id\": \"{{promo_id}}\"\n}"},
+						"url": {
+							"raw": "{{product_base_url}}/api/v1/products",
+							"host": ["{{product_base_url}}"],
+							"path": ["api", "v1", "products"]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "3.2 Create Low-Stock Product (qty=2)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (pm.response.code === 201) {",
+									"  pm.environment.set('low_stock_product_id', pm.response.json().id);",
+									"}"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [{"key": "Content-Type", "value": "application/json"}],
+						"body": {"mode": "raw", "raw": "{\n  \"title\": \"Лампа дефицит demo\",\n  \"description\": \"Мало на складе\",\n  \"price\": \"199.00\",\n  \"quantity\": 2,\n  \"brightness_lm\": 600,\n  \"is_archived\": false,\n  \"category_id\": \"{{cat_id}}\",\n  \"bulb_type_id\": \"{{bt_id}}\",\n  \"bulb_shape_id\": \"{{bs_id}}\",\n  \"socket_id\": \"{{sock_id}}\",\n  \"supplier_id\": \"{{sup_id}}\"\n}"},
+						"url": {
+							"raw": "{{product_base_url}}/api/v1/products",
+							"host": ["{{product_base_url}}"],
+							"path": ["api", "v1", "products"]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "3.3 Create Archived Product",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (pm.response.code === 201) {",
+									"  pm.environment.set('archived_product_id', pm.response.json().id);",
+									"}"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [{"key": "Content-Type", "value": "application/json"}],
+						"body": {"mode": "raw", "raw": "{\n  \"title\": \"Архивная лампа demo\",\n  \"description\": \"Снята с продажи\",\n  \"price\": \"99.00\",\n  \"quantity\": 50,\n  \"brightness_lm\": 400,\n  \"is_archived\": true,\n  \"category_id\": \"{{cat_id}}\",\n  \"bulb_type_id\": \"{{bt_id}}\",\n  \"bulb_shape_id\": \"{{bs_id}}\",\n  \"socket_id\": \"{{sock_id}}\",\n  \"supplier_id\": \"{{sup_id}}\"\n}"},
+						"url": {
+							"raw": "{{product_base_url}}/api/v1/products",
+							"host": ["{{product_base_url}}"],
+							"path": ["api", "v1", "products"]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "3.4 List Products (active by default)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{product_base_url}}/api/v1/products",
+							"host": ["{{product_base_url}}"],
+							"path": ["api", "v1", "products"]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "3.5 List Products — Archived only",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{product_base_url}}/api/v1/products?is_archived=true",
+							"host": ["{{product_base_url}}"],
+							"path": ["api", "v1", "products"],
+							"query": [{"key": "is_archived", "value": "true"}]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "3.6 List Products — Filter by category",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{product_base_url}}/api/v1/products?category_id={{cat_id}}",
+							"host": ["{{product_base_url}}"],
+							"path": ["api", "v1", "products"],
+							"query": [{"key": "category_id", "value": "{{cat_id}}"}]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "3.7 List Products — Pagination",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{product_base_url}}/api/v1/products?page=1&size=2",
+							"host": ["{{product_base_url}}"],
+							"path": ["api", "v1", "products"],
+							"query": [
+								{"key": "page", "value": "1"},
+								{"key": "size", "value": "2"}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "3.8 Get Product by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{product_base_url}}/api/v1/products/{{product_id}}",
+							"host": ["{{product_base_url}}"],
+							"path": ["api", "v1", "products", "{{product_id}}"]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "3.9 Update Product (price + quantity)",
+					"request": {
+						"method": "PUT",
+						"header": [{"key": "Content-Type", "value": "application/json"}],
+						"body": {"mode": "raw", "raw": "{\n  \"price\": \"399.00\",\n  \"quantity\": 50\n}"},
+						"url": {
+							"raw": "{{product_base_url}}/api/v1/products/{{product_id}}",
+							"host": ["{{product_base_url}}"],
+							"path": ["api", "v1", "products", "{{product_id}}"]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "3.10 Get Unknown Product — expect 404",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{product_base_url}}/api/v1/products/00000000-0000-0000-0000-000000000000",
+							"host": ["{{product_base_url}}"],
+							"path": ["api", "v1", "products", "00000000-0000-0000-0000-000000000000"]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "3.11 Update with Invalid FK — expect 422",
+					"request": {
+						"method": "PUT",
+						"header": [{"key": "Content-Type", "value": "application/json"}],
+						"body": {"mode": "raw", "raw": "{\n  \"category_id\": \"00000000-0000-0000-0000-000000000000\"\n}"},
+						"url": {
+							"raw": "{{product_base_url}}/api/v1/products/{{product_id}}",
+							"host": ["{{product_base_url}}"],
+							"path": ["api", "v1", "products", "{{product_id}}"]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "04 Reviews",
+			"item": [
+				{
+					"name": "4.1 Create Review (rating 5)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (pm.response.code === 201) {",
+									"  pm.environment.set('review_id', pm.response.json().id);",
+									"}"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [{"key": "Content-Type", "value": "application/json"}],
+						"body": {"mode": "raw", "raw": "{\n  \"product_id\": \"{{product_id}}\",\n  \"text\": \"Светит ярко, доволен.\",\n  \"rating\": 5\n}"},
+						"url": {
+							"raw": "{{product_base_url}}/api/v1/reviews",
+							"host": ["{{product_base_url}}"],
+							"path": ["api", "v1", "reviews"]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "4.2 Create Review (rating 4)",
+					"request": {
+						"method": "POST",
+						"header": [{"key": "Content-Type", "value": "application/json"}],
+						"body": {"mode": "raw", "raw": "{\n  \"product_id\": \"{{product_id}}\",\n  \"text\": \"Норм, работает.\",\n  \"rating\": 4\n}"},
+						"url": {
+							"raw": "{{product_base_url}}/api/v1/reviews",
+							"host": ["{{product_base_url}}"],
+							"path": ["api", "v1", "reviews"]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "4.3 List Reviews by Product",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{product_base_url}}/api/v1/reviews?product_id={{product_id}}",
+							"host": ["{{product_base_url}}"],
+							"path": ["api", "v1", "reviews"],
+							"query": [{"key": "product_id", "value": "{{product_id}}"}]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "4.4 Invalid Rating (0) — expect 422",
+					"request": {
+						"method": "POST",
+						"header": [{"key": "Content-Type", "value": "application/json"}],
+						"body": {"mode": "raw", "raw": "{\n  \"product_id\": \"{{product_id}}\",\n  \"text\": \"x\",\n  \"rating\": 0\n}"},
+						"url": {
+							"raw": "{{product_base_url}}/api/v1/reviews",
+							"host": ["{{product_base_url}}"],
+							"path": ["api", "v1", "reviews"]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "4.5 Review for Unknown Product — expect 404",
+					"request": {
+						"method": "POST",
+						"header": [{"key": "Content-Type", "value": "application/json"}],
+						"body": {"mode": "raw", "raw": "{\n  \"product_id\": \"00000000-0000-0000-0000-000000000000\",\n  \"text\": \"x\",\n  \"rating\": 3\n}"},
+						"url": {
+							"raw": "{{product_base_url}}/api/v1/reviews",
+							"host": ["{{product_base_url}}"],
+							"path": ["api", "v1", "reviews"]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "4.6 Delete Review",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{product_base_url}}/api/v1/reviews/{{review_id}}",
+							"host": ["{{product_base_url}}"],
+							"path": ["api", "v1", "reviews", "{{review_id}}"]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "05 Dictionary Delete Conflicts",
+			"item": [
+				{
+					"name": "5.1 Delete Used Category — expect 409",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{product_base_url}}/api/v1/categories/{{cat_id}}",
+							"host": ["{{product_base_url}}"],
+							"path": ["api", "v1", "categories", "{{cat_id}}"]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "5.2 Delete Used Socket — expect 409",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{product_base_url}}/api/v1/sockets/{{sock_id}}",
+							"host": ["{{product_base_url}}"],
+							"path": ["api", "v1", "sockets", "{{sock_id}}"]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "5.3 Delete Unknown Category — expect 404",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{product_base_url}}/api/v1/categories/00000000-0000-0000-0000-000000000000",
+							"host": ["{{product_base_url}}"],
+							"path": ["api", "v1", "categories", "00000000-0000-0000-0000-000000000000"]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "06 Orders",
+			"item": [
+				{
+					"name": "6.1 Create Order (qty=2)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (pm.response.code === 201) {",
+									"  pm.environment.set('order_id', pm.response.json().id);",
+									"}"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [{"key": "Content-Type", "value": "application/json"}],
+						"body": {"mode": "raw", "raw": "{\n  \"client_email\": \"demo@example.com\",\n  \"client_phone\": \"+7-999-1234567\",\n  \"comment\": \"Демо заказ\",\n  \"items\": [\n    {\"product_id\": \"{{product_id}}\", \"quantity\": 2}\n  ]\n}"},
+						"url": {
+							"raw": "{{order_base_url}}/api/v1/orders",
+							"host": ["{{order_base_url}}"],
+							"path": ["api", "v1", "orders"]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "6.2 Create Order (will be cancelled)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if (pm.response.code === 201) {",
+									"  pm.environment.set('order_id_to_cancel', pm.response.json().id);",
+									"}"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [{"key": "Content-Type", "value": "application/json"}],
+						"body": {"mode": "raw", "raw": "{\n  \"client_email\": \"cancel@example.com\",\n  \"client_phone\": \"+7-999-7654321\",\n  \"comment\": \"Заказ под отмену\",\n  \"items\": [\n    {\"product_id\": \"{{product_id}}\", \"quantity\": 1}\n  ]\n}"},
+						"url": {
+							"raw": "{{order_base_url}}/api/v1/orders",
+							"host": ["{{order_base_url}}"],
+							"path": ["api", "v1", "orders"]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "6.3 Insufficient Stock — expect 409",
+					"request": {
+						"method": "POST",
+						"header": [{"key": "Content-Type", "value": "application/json"}],
+						"body": {"mode": "raw", "raw": "{\n  \"client_email\": \"toomany@example.com\",\n  \"client_phone\": \"+7-999-0000001\",\n  \"comment\": \"Слишком много\",\n  \"items\": [\n    {\"product_id\": \"{{low_stock_product_id}}\", \"quantity\": 999}\n  ]\n}"},
+						"url": {
+							"raw": "{{order_base_url}}/api/v1/orders",
+							"host": ["{{order_base_url}}"],
+							"path": ["api", "v1", "orders"]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "6.4 Archived Product — expect 422",
+					"request": {
+						"method": "POST",
+						"header": [{"key": "Content-Type", "value": "application/json"}],
+						"body": {"mode": "raw", "raw": "{\n  \"client_email\": \"archived@example.com\",\n  \"client_phone\": \"+7-999-0000002\",\n  \"comment\": \"Архивный товар\",\n  \"items\": [\n    {\"product_id\": \"{{archived_product_id}}\", \"quantity\": 1}\n  ]\n}"},
+						"url": {
+							"raw": "{{order_base_url}}/api/v1/orders",
+							"host": ["{{order_base_url}}"],
+							"path": ["api", "v1", "orders"]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "6.5 Unknown Product — expect 422",
+					"request": {
+						"method": "POST",
+						"header": [{"key": "Content-Type", "value": "application/json"}],
+						"body": {"mode": "raw", "raw": "{\n  \"client_email\": \"ghost@example.com\",\n  \"client_phone\": \"+7-999-0000003\",\n  \"comment\": \"Несуществующий товар\",\n  \"items\": [\n    {\"product_id\": \"00000000-0000-0000-0000-000000000000\", \"quantity\": 1}\n  ]\n}"},
+						"url": {
+							"raw": "{{order_base_url}}/api/v1/orders",
+							"host": ["{{order_base_url}}"],
+							"path": ["api", "v1", "orders"]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "6.6 List Orders",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{order_base_url}}/api/v1/orders",
+							"host": ["{{order_base_url}}"],
+							"path": ["api", "v1", "orders"]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "6.7 List Orders — status=NEW",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{order_base_url}}/api/v1/orders?status=NEW",
+							"host": ["{{order_base_url}}"],
+							"path": ["api", "v1", "orders"],
+							"query": [{"key": "status", "value": "NEW"}]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "6.8 Get Order by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{order_base_url}}/api/v1/orders/{{order_id}}",
+							"host": ["{{order_base_url}}"],
+							"path": ["api", "v1", "orders", "{{order_id}}"]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "07 Order Lifecycle",
+			"item": [
+				{
+					"name": "7.1 NEW → DELIVERED — expect 409",
+					"request": {
+						"method": "PATCH",
+						"header": [{"key": "Content-Type", "value": "application/json"}],
+						"body": {"mode": "raw", "raw": "{\n  \"status\": \"DELIVERED\"\n}"},
+						"url": {
+							"raw": "{{order_base_url}}/api/v1/orders/{{order_id}}",
+							"host": ["{{order_base_url}}"],
+							"path": ["api", "v1", "orders", "{{order_id}}"]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "7.2 NEW → IN_PROGRESS",
+					"request": {
+						"method": "PATCH",
+						"header": [{"key": "Content-Type", "value": "application/json"}],
+						"body": {"mode": "raw", "raw": "{\n  \"status\": \"IN_PROGRESS\"\n}"},
+						"url": {
+							"raw": "{{order_base_url}}/api/v1/orders/{{order_id}}",
+							"host": ["{{order_base_url}}"],
+							"path": ["api", "v1", "orders", "{{order_id}}"]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "7.3 IN_PROGRESS → DELIVERED",
+					"request": {
+						"method": "PATCH",
+						"header": [{"key": "Content-Type", "value": "application/json"}],
+						"body": {"mode": "raw", "raw": "{\n  \"status\": \"DELIVERED\"\n}"},
+						"url": {
+							"raw": "{{order_base_url}}/api/v1/orders/{{order_id}}",
+							"host": ["{{order_base_url}}"],
+							"path": ["api", "v1", "orders", "{{order_id}}"]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "7.4 DELIVERED → NEW — expect 409",
+					"request": {
+						"method": "PATCH",
+						"header": [{"key": "Content-Type", "value": "application/json"}],
+						"body": {"mode": "raw", "raw": "{\n  \"status\": \"NEW\"\n}"},
+						"url": {
+							"raw": "{{order_base_url}}/api/v1/orders/{{order_id}}",
+							"host": ["{{order_base_url}}"],
+							"path": ["api", "v1", "orders", "{{order_id}}"]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "7.5 Cancel Second Order",
+					"request": {
+						"method": "PATCH",
+						"header": [{"key": "Content-Type", "value": "application/json"}],
+						"body": {"mode": "raw", "raw": "{\n  \"status\": \"CANCELLED\"\n}"},
+						"url": {
+							"raw": "{{order_base_url}}/api/v1/orders/{{order_id_to_cancel}}",
+							"host": ["{{order_base_url}}"],
+							"path": ["api", "v1", "orders", "{{order_id_to_cancel}}"]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "7.6 List Orders — status=DELIVERED",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{order_base_url}}/api/v1/orders?status=DELIVERED",
+							"host": ["{{order_base_url}}"],
+							"path": ["api", "v1", "orders"],
+							"query": [{"key": "status", "value": "DELIVERED"}]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "7.7 List Orders — status=CANCELLED",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{order_base_url}}/api/v1/orders?status=CANCELLED",
+							"host": ["{{order_base_url}}"],
+							"path": ["api", "v1", "orders"],
+							"query": [{"key": "status", "value": "CANCELLED"}]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "08 Cleanup",
+			"item": [
+				{
+					"name": "8.1 Delete Archived Product",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{product_base_url}}/api/v1/products/{{archived_product_id}}",
+							"host": ["{{product_base_url}}"],
+							"path": ["api", "v1", "products", "{{archived_product_id}}"]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "8.2 Delete Low-Stock Product",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{product_base_url}}/api/v1/products/{{low_stock_product_id}}",
+							"host": ["{{product_base_url}}"],
+							"path": ["api", "v1", "products", "{{low_stock_product_id}}"]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "8.3 Delete Main Product (cascades reviews)",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{product_base_url}}/api/v1/products/{{product_id}}",
+							"host": ["{{product_base_url}}"],
+							"path": ["api", "v1", "products", "{{product_id}}"]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "8.4 Delete Category",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{product_base_url}}/api/v1/categories/{{cat_id}}",
+							"host": ["{{product_base_url}}"],
+							"path": ["api", "v1", "categories", "{{cat_id}}"]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "8.5 Delete Socket",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{product_base_url}}/api/v1/sockets/{{sock_id}}",
+							"host": ["{{product_base_url}}"],
+							"path": ["api", "v1", "sockets", "{{sock_id}}"]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "8.6 Delete Bulb Type",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{product_base_url}}/api/v1/bulb-types/{{bt_id}}",
+							"host": ["{{product_base_url}}"],
+							"path": ["api", "v1", "bulb-types", "{{bt_id}}"]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "8.7 Delete Bulb Shape",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{product_base_url}}/api/v1/bulb-shapes/{{bs_id}}",
+							"host": ["{{product_base_url}}"],
+							"path": ["api", "v1", "bulb-shapes", "{{bs_id}}"]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "8.8 Delete Supplier",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{product_base_url}}/api/v1/suppliers/{{sup_id}}",
+							"host": ["{{product_base_url}}"],
+							"path": ["api", "v1", "suppliers", "{{sup_id}}"]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "8.9 Delete Promo",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{product_base_url}}/api/v1/promos/{{promo_id}}",
+							"host": ["{{product_base_url}}"],
+							"path": ["api", "v1", "promos", "{{promo_id}}"]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
