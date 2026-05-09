@@ -1,10 +1,9 @@
 name: CI
 
 on:
-  push:
-    branches: [main]
   pull_request:
-    branches: [main]
+    branches: [master]
+  workflow_call:
 
 jobs:
   test:
@@ -56,3 +55,29 @@ jobs:
         env:
           DATABASE_URL: postgresql+asyncpg://ci:ci@localhost:5432/ci
         run: alembic upgrade head
+
+  e2e:
+    name: e2e tests
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: pip
+      - name: Install e2e deps
+        run: pip install -r tests_e2e/requirements.txt
+      - name: Build & start stack
+        run: docker compose up -d --build
+      - name: Run e2e tests
+        env:
+          PRODUCTS_BASE_URL: http://localhost:8002
+          ORDERS_BASE_URL: http://localhost:8003
+        run: pytest tests_e2e/ -v
+      - name: Dump compose logs on failure
+        if: failure()
+        run: docker compose logs
+      - name: Tear down
+        if: always()
+        run: docker compose down -v
